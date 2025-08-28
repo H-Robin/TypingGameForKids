@@ -1,0 +1,37 @@
+<!-- assets/svg/keyboard_jis.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" aria-label="学習用JISキーボード（ホーム行抜粋）">
+  <rect x="20" y="60" width="760" height="60" rx="12" fill="#f8faff" stroke="#e5eafe"/>
+<!-- 左手 -->
+<g id="key-KeyA" class="key finger-L4" transform="translate(60,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">A</text>
+</g>
+<g id="key-KeyS" class="key finger-L3" transform="translate(125,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">S</text>
+</g>
+<g id="key-KeyD" class="key finger-L2" transform="translate(190,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">D</text>
+</g>
+<g id="key-KeyF" class="key finger-L1" transform="translate(255,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">F</text>
+</g>
+<g id="key-KeyG" class="key finger-L1" transform="translate(320,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">G</text>
+</g>
+
+<!-- 右手 -->
+<g id="key-KeyH" class="key finger-R1" transform="translate(385,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">H</text>
+</g>
+<g id="key-KeyJ" class="key finger-R1" transform="translate(450,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">J</text>
+</g>
+<g id="key-KeyK" class="key finger-R2" transform="translate(515,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">K</text>
+</g>
+<g id="key-KeyL" class="key finger-R3" transform="translate(580,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">L</text>
+</g>
+<g id="key-Semicolon" class="key finger-R4" transform="translate(645,70)">
+  <rect width="60" height="40" rx="6"/><text class="label" x="10" y="26">;</text>
+</g>
+</svg>

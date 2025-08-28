@@ -1,0 +1,73 @@
+/* === Practice HUD === */
+.hud {
+  display: flex;
+  gap: .6rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: .7rem;
+  font-weight: 700;
+}
+.chip {
+  background: #fff;
+  border: 1px solid #dbe3ff;
+  border-radius: 999px;
+  padding: .35rem .8rem;
+}
+
+/* === Practice main === */
+.practice-main { max-width: 980px; margin: 0 auto; text-align: center; padding: 1rem; }
+.prompt .kana { font-size: 1.1rem; color: #667; margin-top: .3rem; }
+.prompt .roma { font-size: 2.4rem; font-weight: 800; letter-spacing: .06em; }
+#typed { color: #10b981; }
+.feedback { min-height: 1.6rem; font-weight: 700; margin: .5rem 0; }
+
+.controls { display: flex; gap: .6rem; justify-content: center; flex-wrap: wrap; margin: .6rem 0 .8rem; }
+button { cursor: pointer; border: 2px solid #4f46e5; background: #4f46e5; color: #fff; border-radius: 10px; padding: .55rem 1rem; font-weight: 800; }
+button.secondary { background: #fff; color: #4f46e5; }
+label.mute { display: inline-flex; align-items: center; gap: .4rem; font-weight: 600; }
+
+.keyboard-area { margin-top: 12px; min-height: 140px; background: #f8faff; border: 1px dashed #dbe3ff; border-radius: 12px; display: grid; place-items: center; }
+.placeholder { color: #94a3b8; }
+
+/* --- SVG keyboard fixes (final) --- */
+/* デフォルト：薄い灰で統一 */
+#keyboard-area .key rect {
+  fill: #f3f4f6;
+  stroke: #d1d5db;
+  stroke-width: 2;
+}
+#keyboard-area .label {
+  fill: #374151;
+  font: 600 12px/1 system-ui, Arial;
+  stroke: none;
+}
+
+/* 指色指定はすべて同色で上書き（教育向けシンプル） */
+#keyboard-area .finger-L1 rect,
+#keyboard-area .finger-L2 rect,
+#keyboard-area .finger-L3 rect,
+#keyboard-area .finger-L4 rect,
+#keyboard-area .finger-R1 rect,
+#keyboard-area .finger-R2 rect,
+#keyboard-area .finger-R3 rect,
+#keyboard-area .finger-R4 rect,
+#keyboard-area .finger-Thumb rect {
+  fill: #f3f4f6 !important;
+}
+
+/* 押下：rect 自体に .pressed を付ける前提（グループは触らない） */
+#keyboard-area rect.pressed {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translateY(2px);
+  filter: drop-shadow(0 2px 0 #b6c0ff);
+  transition: transform .08s ease;
+}
+
+/* 誤って <g class="pressed"> が付いた場合の保険：位置は変えない */
+#keyboard-area g.pressed { transform: none !important; filter: none !important; }
+
+/* ターゲット枠は rect 限定。文字は太らせない */
+#keyboard-area .key.target > rect { stroke:#ef4444; stroke-width:3; }
+#keyboard-area .key.target .label { stroke:none; }

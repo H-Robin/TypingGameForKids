@@ -1,0 +1,40 @@
+<section id="practice" class="view">
+  <header class="hud">
+    <div class="chip">残り <span id="hud-time">45</span>s</div>
+    <div class="chip">WPM <span id="hud-wpm">0</span></div>
+    <div class="chip">正確度 <span id="hud-acc">100</span>%</div>
+    <div class="chip">正打 <span id="hud-ok">0</span></div>
+    <div class="chip">ミス <span id="hud-ng">0</span></div>
+  </header>
+
+  <div class="practice-main">
+    <h2>キーボード練習</h2>
+
+    <!-- 課題表示 -->
+    <div class="prompt">
+      <div class="kana" id="prompt-kana">ホームポジション：F と J</div>
+      <div class="roma">
+        <span id="typed"></span><span id="remain">f j f j f j f j</span>
+      </div>
+      <div id="feedback" class="feedback">Spaceで開始 / Escで一時停止</div>
+    </div>
+
+    <!-- 操作 -->
+    <div class="controls">
+      <button id="btn-start" data-action="start">▶ 開始（Space）</button>
+      <button id="btn-pause" data-action="pause" class="secondary">⏸ 一時停止（Esc）</button>
+      <button id="btn-reset" data-action="reset" class="secondary">↺ リセット</button>
+      <label class="mute"><input type="checkbox" id="chk-mute" /> 効果音ミュート</label>
+    </div>
+
+    <!-- ガイドキーボード（後でSVGを差し込み） -->
+    <div id="keyboard-area" class="keyboard-area">
+      <p class="placeholder">（ここにSVGキーボードが入ります）</p>
+    </div>
+
+    <!-- 戻る -->
+    <div class="menu">
+      <button data-link="#/home">← ホームへ戻る</button>
+    </div>
+  </div>
+</section>

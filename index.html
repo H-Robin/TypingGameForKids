@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Typing App</title>
+  <link rel="stylesheet" href="./css/main.css" />
+</head>
+<body>
+  <!-- 共通ヘッダー -->
+  <header>
+    <h1>キッズ・タイピング</h1>
+    <nav>
+      <a href="#/home">ホーム</a>
+      <a href="#/practice">練習</a>
+      <a href="#/timeattack">タイムアタック</a>
+      <a href="#/settings">設定</a>
+    </nav>
+  </header>
+
+  <!-- 各画面を差し込む場所 -->
+  <main id="app">
+    <!-- views/home.html などがここに読み込まれる -->
+  </main>
+
+  <!-- 共通フッター（任意） -->
+  <footer>
+    <small>&copy; 2025 Kids Typing</small>
+  </footer>
+
+    <script src="./js/router.js"></script>
+    <script src="./js/keyboard.js"></script>
+    <script src="./js/typing-engine.js" type="module"></script>
+    <script src="./js/app.js"></script>
+</body>
+</html>
