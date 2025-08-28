@@ -15,6 +15,21 @@
   padding: .35rem .8rem;
 }
 
+/* ===  Lessons === */
+.lesson-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  max-width: 980px; margin: 0 auto; padding: 1rem;
+}
+.lesson-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 1rem;
+}
+.lesson-card h3 { margin: .2rem 0 .8rem; }
+.drills { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+.drills .drill { padding: .6rem .8rem; border-radius: 10px; border: 2px solid #4f46e5; background: #fff; color: #4f46e5; font-weight: 800; cursor: pointer; }
+.drills .drill:hover { background: #eef2ff; }
+
 /* === Practice main === */
 .practice-main { max-width: 980px; margin: 0 auto; text-align: center; padding: 1rem; }
 .prompt .kana { font-size: 1.1rem; color: #667; margin-top: .3rem; }
@@ -29,6 +44,7 @@ label.mute { display: inline-flex; align-items: center; gap: .4rem; font-weight:
 
 .keyboard-area { margin-top: 12px; min-height: 140px; background: #f8faff; border: 1px dashed #dbe3ff; border-radius: 12px; display: grid; place-items: center; }
 .placeholder { color: #94a3b8; }
+
 
 /* --- SVG keyboard fixes (final) --- */
 /* デフォルト：薄い灰で統一 */

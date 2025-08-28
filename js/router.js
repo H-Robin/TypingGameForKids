@@ -1,13 +1,14 @@
 // js/router.js
 (() => {
   // ---- 設定：パス → パーシャルHTMLの対応表 ----
-  const routes = {
-    "/home":       "views/home.html",
-    "/practice":   "views/practice.html",
-    "/timeattack": "views/timeattack.html",
-    "/settings":   "views/settings.html",
-    "/result":     "views/result.html",
-  };
+const routes = {
+   "/home":       "views/home.html",
+   "/lessons":    "views/lessons.html",
+   "/practice":   "views/practice.html",
+   "/timeattack": "views/timeattack.html",
+   "/settings":   "views/settings.html",
+   "/result":     "views/result.html",
+};
 
   const DEFAULT_ROUTE = "/home";
   const appEl = document.getElementById("app");
