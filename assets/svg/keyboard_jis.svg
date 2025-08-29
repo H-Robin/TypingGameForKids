@@ -1,37 +1,142 @@
-<!-- assets/svg/keyboard_jis.svg -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" aria-label="学習用JISキーボード（ホーム行抜粋）">
-  <rect x="20" y="60" width="760" height="60" rx="12" fill="#f8faff" stroke="#e5eafe"/>
-<!-- 左手 -->
-<g id="key-KeyA" class="key finger-L4" transform="translate(60,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">A</text>
-</g>
-<g id="key-KeyS" class="key finger-L3" transform="translate(125,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">S</text>
-</g>
-<g id="key-KeyD" class="key finger-L2" transform="translate(190,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">D</text>
-</g>
-<g id="key-KeyF" class="key finger-L1" transform="translate(255,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">F</text>
-</g>
-<g id="key-KeyG" class="key finger-L1" transform="translate(320,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">G</text>
-</g>
+<!-- JIS 109配列のメインブロック（テンキー/ファンクション列は別途） -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 360" aria-label="JIS Keyboard Main Block">
+  <style>
+    .key rect{ fill:#f3f4f6; stroke:#d1d5db; stroke-width:2 }
+    .label{ fill:#374151; font:600 12px/1 system-ui,Arial; user-select:none }
+  </style>
 
-<!-- 右手 -->
-<g id="key-KeyH" class="key finger-R1" transform="translate(385,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">H</text>
-</g>
-<g id="key-KeyJ" class="key finger-R1" transform="translate(450,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">J</text>
-</g>
-<g id="key-KeyK" class="key finger-R2" transform="translate(515,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">K</text>
-</g>
-<g id="key-KeyL" class="key finger-R3" transform="translate(580,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="12" y="26">L</text>
-</g>
-<g id="key-Semicolon" class="key finger-R4" transform="translate(645,70)">
-  <rect width="60" height="40" rx="6"/><text class="label" x="10" y="26">;</text>
-</g>
+  <!-- 行ガイド（任意） -->
+  <rect x="20" y="60"  width="960" height="56" rx="12" fill="#f8faff" stroke="#e5eafe"/>
+  <rect x="20" y="120" width="960" height="56" rx="12" fill="#f8faff" stroke="#e5eafe"/>
+  <rect x="20" y="180" width="960" height="56" rx="12" fill="#f8faff" stroke="#e5eafe"/>
+  <rect x="20" y="240" width="960" height="56" rx="12" fill="#f8faff" stroke="#e5eafe"/>
+
+  <!-- レイアウト基準 -->
+  <!-- キー幅: 56, 横間隔: 60, 行オフセット: y=60/120/180/240 -->
+  <!-- 左上マージン x0=40。特殊キーは幅を調整。 -->
+
+  <!-- 1段目（数字列 + Backspace + IntlYen） -->
+  <g transform="translate(40,60)">
+    <g id="key-Backquote" class="key" transform="translate(0,0)">
+      <rect width="56" height="40" rx="6"/><text class="label" x="8" y="26">` ~</text>
+    </g>
+    <g id="key-Digit1" class="key" transform="translate(60,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">1</text></g>
+    <g id="key-Digit2" class="key" transform="translate(120,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">2</text></g>
+    <g id="key-Digit3" class="key" transform="translate(180,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">3</text></g>
+    <g id="key-Digit4" class="key" transform="translate(240,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">4</text></g>
+    <g id="key-Digit5" class="key" transform="translate(300,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">5</text></g>
+    <g id="key-Digit6" class="key" transform="translate(360,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">6</text></g>
+    <g id="key-Digit7" class="key" transform="translate(420,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">7</text></g>
+    <g id="key-Digit8" class="key" transform="translate(480,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">8</text></g>
+    <g id="key-Digit9" class="key" transform="translate(540,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">9</text></g>
+    <g id="key-Digit0" class="key" transform="translate(600,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">0</text></g>
+    <g id="key-Minus"   class="key" transform="translate(660,0)"><rect width="56" height="40" rx="6"/><text class="label" x="12" y="26">- _</text></g>
+    <g id="key-Equal"   class="key" transform="translate(720,0)"><rect width="56" height="40" rx="6"/><text class="label" x="10" y="26">= ^</text></g>
+    <g id="key-IntlYen" class="key" transform="translate(780,0)"><rect width="56" height="40" rx="6"/><text class="label" x="10" y="26">¥ |</text></g>
+    <g id="key-Backspace" class="key" transform="translate(840,0)">
+      <rect width="120" height="40" rx="6"/><text class="label" x="18" y="26">Backspace</text>
+    </g>
+  </g>
+
+  <!-- 2段目（Tab + Q〜P + [ ] + Enter（L字想定の手前まで）） -->
+  <g transform="translate(40,120)">
+    <g id="key-Tab" class="key" transform="translate(0,0)">
+      <rect width="84" height="40" rx="6"/><text class="label" x="14" y="26">Tab</text>
+    </g>
+    <g id="key-KeyQ" class="key" transform="translate(90,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">Q</text></g>
+    <g id="key-KeyW" class="key" transform="translate(150,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">W</text></g>
+    <g id="key-KeyR" class="key" transform="translate(210,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">R</text></g>
+    <g id="key-KeyT" class="key" transform="translate(270,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">T</text></g>
+    <g id="key-KeyY" class="key" transform="translate(330,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">Y</text></g>
+    <g id="key-KeyU" class="key" transform="translate(390,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">U</text></g>
+    <g id="key-KeyI" class="key" transform="translate(450,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">I</text></g>
+    <g id="key-KeyO" class="key" transform="translate(510,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">O</text></g>
+    <g id="key-KeyP" class="key" transform="translate(570,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">P</text></g>
+    <g id="key-BracketLeft"  class="key" transform="translate(630,0)"><rect width="56" height="40" rx="6"/><text class="label" x="12" y="26">[ {</text></g>
+    <g id="key-BracketRight" class="key" transform="translate(690,0)"><rect width="56" height="40" rx="6"/><text class="label" x="12" y="26">] }</text></g>
+    <!-- Enter：2段目のみ／横長、重ならない寸法 -->
+    <g id="key-Enter" class="key" transform="translate(750,0)">
+      <!-- 幅 190, 高さ 40 → グループの右端(=x 940)まででピッタリ収まる -->
+      <rect width="190" height="40" rx="6"/>
+      <text class="label" x="70" y="26">Enter</text>
+    </g>
+  </g>
+
+  <!-- 3段目（Caps + A〜; + ' + IntlBackslash代替） -->
+  <g transform="translate(40,180)">
+    <g id="key-CapsLock" class="key" transform="translate(0,0)">
+      <rect width="100" height="40" rx="6"/><text class="label" x="14" y="26">Caps</text>
+    </g>
+    <g id="key-KeyA" class="key" transform="translate(110,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">A</text></g>
+    <g id="key-KeyS" class="key" transform="translate(170,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">S</text></g>
+    <g id="key-KeyD" class="key" transform="translate(230,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">D</text></g>
+    <g id="key-KeyF" class="key" transform="translate(290,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">F</text></g>
+    <g id="key-KeyG" class="key" transform="translate(350,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">G</text></g>
+    <g id="key-KeyH" class="key" transform="translate(410,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">H</text></g>
+    <g id="key-KeyJ" class="key" transform="translate(470,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">J</text></g>
+    <g id="key-KeyK" class="key" transform="translate(530,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">K</text></g>
+    <g id="key-KeyL" class="key" transform="translate(590,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">L</text></g>
+    <g id="key-Semicolon" class="key" transform="translate(650,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">; +</text></g>
+    <g id="key-Quote" class="key" transform="translate(710,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">' "</text></g>
+    <!-- JISではUSのBackslash位置が異なるため保険で配置（ブラウザによっては使われない） -->
+    <g id="key-Backslash" class="key" transform="translate(770,0)"><rect width="56" height="40" rx="6"/><text class="label" x="8" y="26">\ |</text></g>
+  </g>
+
+  <!-- 4段目（Shift + Z〜/ + IntlRo + ShiftRight） -->
+  <g transform="translate(40,240)">
+    <g id="key-ShiftLeft" class="key" transform="translate(0,0)">
+      <rect width="130" height="40" rx="6"/><text class="label" x="16" y="26">Shift</text>
+    </g>
+    <g id="key-KeyZ" class="key" transform="translate(150,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">Z</text></g>
+    <g id="key-KeyX" class="key" transform="translate(210,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">X</text></g>
+    <g id="key-KeyC" class="key" transform="translate(270,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">C</text></g>
+    <g id="key-KeyV" class="key" transform="translate(330,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">V</text></g>
+    <g id="key-KeyB" class="key" transform="translate(390,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">B</text></g>
+    <g id="key-KeyN" class="key" transform="translate(450,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">N</text></g>
+    <g id="key-KeyM" class="key" transform="translate(510,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">M</text></g>
+    <g id="key-Comma" class="key" transform="translate(570,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">, &lt;</text></g>
+    <g id="key-Period" class="key" transform="translate(630,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">. &gt;</text></g>
+    <g id="key-Slash" class="key" transform="translate(690,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">/ ?</text></g>
+    <!-- JIS特有：ろキー（右Shift左隣） -->
+    <g id="key-IntlRo" class="key" transform="translate(750,0)"><rect width="56" height="40" rx="6"/><text class="label" x="10" y="26">ろ _</text></g>
+    <g id="key-ShiftRight" class="key" transform="translate(810,0)">
+      <rect width="120" height="40" rx="6"/><text class="label" x="70" y="26">Shift</text>
+    </g>
+  </g>
+
+  <!-- 5段目（Ctrl/Win/Alt/Kana/Space/変換/無変換/Alt/Win/Ctrl） -->
+  <g transform="translate(40,300)">
+    <g id="key-ControlLeft" class="key" transform="translate(0,0)">
+      <rect width="88" height="40" rx="6"/><text class="label" x="12" y="26">Ctrl</text>
+    </g>
+    <g id="key-MetaLeft" class="key" transform="translate(94,0)">
+      <rect width="88" height="40" rx="6"/><text class="label" x="18" y="26">Win</text>
+    </g>
+    <g id="key-AltLeft" class="key" transform="translate(188,0)">
+      <rect width="88" height="40" rx="6"/><text class="label" x="20" y="26">Alt</text>
+    </g>
+    <!-- JIS特有：かな/無変換/変換 -->
+    <g id="key-KanaMode" class="key" transform="translate(282,0)">
+      <rect width="88" height="40" rx="6"/><text class="label" x="16" y="26">かな</text>
+    </g>
+    <g id="key-Space" class="key" transform="translate(376,0)">
+      <rect width="220" height="40" rx="10"/><text class="label" x="92" y="26">Space</text>
+    </g>
+    <g id="key-NonConvert" class="key" transform="translate(602,0)">
+      <rect width="88" height="40" rx="6"/><text class="label" x="8" y="26">無変換</text>
+    </g>
+    <g id="key-Convert" class="key" transform="translate(696,0)">
+      <rect width="88" height="40" rx="6"/><text class="label" x="10" y="26">変換</text>
+    </g>
+    <g id="key-AltRight" class="key" transform="translate(790,0)">
+      <rect width="88" height="40" rx="6"/><text class="label" x="18" y="26">Alt</text>
+    </g>
+    <g id="key-MetaRight" class="key" transform="translate(884,0)">
+      <rect width="88" height="40" rx="6"/><text class="label" x="18" y="26">Win</text>
+    </g>
+    <g id="key-ControlRight" class="key" transform="translate(978,0)">
+      <!-- はみ出し防止のため、viewBox右端と同じに揃える -->
+      <rect width="0" height="0" rx="0"/><!-- 右Ctrlは省略（必要なら幅調整して追加） -->
+    </g>
+  </g>
 </svg>

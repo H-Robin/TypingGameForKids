@@ -2,13 +2,8 @@
 (() => {
   const state = { layout: "JIS", bound: false, loaded: false };
   const areaSel = "#keyboard-area";
+  const svgPathFor = (layout) => `./assets/svg/keyboard_${(layout||"JIS").toLowerCase()}.svg`;
 
-  function svgPathFor(layout) {
-    const key = (layout || "JIS").toLowerCase();
-    return `./assets/svg/keyboard_${key}.svg`;
-  }
-
-  // #keyboard-area にSVGをインライン挿入
   async function load(layout = "JIS") {
     const area = document.querySelector(areaSel);
     if (!area) return;
@@ -26,45 +21,59 @@
     }
   }
 
-  // 指定コードのキー要素
+  // 頑丈：厳密→緩めの順で要素を探す（右手記号の表記揺れにも耐える）
   function keyEl(code) {
-    return document.getElementById(`key-${code}`);
+    if (!code) return null;
+    return (
+      document.getElementById(`key-${code}`) ||                              // 例: key-Semicolon
+      document.getElementById(code) ||                                        // 例: Semicolon
+      document.querySelector(`${areaSel} [id$="${CSS.escape(code)}"]`) ||     // 末尾一致の保険
+      null
+    );
   }
 
-  // 押下アニメ（keydown/keyup）
+  // 押下アニメは rect に .pressed（<g> の transform を壊さない）
   function bindKeyPressVisualsOnce() {
     if (state.bound) return;
     let composing = false;
-    addEventListener("compositionstart", () => composing = true);
-    addEventListener("compositionend",   () => composing = false);
+    addEventListener("compositionstart", () => (composing = true));
+    addEventListener("compositionend",   () => (composing = false));
 
     addEventListener("keydown", (e) => {
       if (composing) return;
-      if (e.code === "Space") e.preventDefault(); // スクロール防止
-      const el = keyEl(e.code)?.querySelector("rect");
-      if (el) el.classList.add("pressed");
+      if (e.code === "Space") e.preventDefault();
+      const g = keyEl(e.code);
+      const rect = g?.querySelector?.("rect");
+      if (rect) rect.classList.add("pressed");
     });
+
     addEventListener("keyup", (e) => {
-      const el = keyEl(e.code)?.querySelector("rect");
-      if (el) el.classList.remove("pressed");
+      const g = keyEl(e.code);
+      const rect = g?.querySelector?.("rect");
+      if (rect) rect.classList.remove("pressed");
     });
+
     state.bound = true;
   }
 
-  // ターゲットの付け外し（外から使えるAPI）
-  function highlightTarget(code) {
-    const area = document.querySelector(areaSel);
-    if (!area) return;
-    area.querySelectorAll(".target").forEach(el => el.classList.remove("target"));
-    const el = keyEl(code);
-    if (el) el.classList.add("target");
-  }
+  // target 付け外し：<g>.target と rect.target の両対応
   function clearTargets() {
     const area = document.querySelector(areaSel);
     if (!area) return;
-    area.querySelectorAll(".target").forEach(el => el.classList.remove("target"));
+    area.querySelectorAll(".key.target").forEach((g) => g.classList.remove("target")); // <g>
+    area.querySelectorAll("rect.target").forEach((r) => r.classList.remove("target")); // <rect>
   }
 
-  // 公開
+  function highlightTarget(code) {
+    clearTargets();
+    const el = keyEl(code);
+    if (!el) { console.warn("[KeyboardUI] target not found:", code); return; }
+    if (el.tagName.toLowerCase() === "g") {
+      el.classList.add("target");
+    } else {
+      (el.querySelector?.("rect") || el).classList.add("target");
+    }
+  }
+
   window.KeyboardUI = { load, highlightTarget, clearTargets };
 })();

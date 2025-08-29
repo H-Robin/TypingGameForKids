@@ -1,4 +1,6 @@
 // js/typing-engine.js
+import { Sound } from "./sound.js";   // ← 追加
+
 export const TypingEngine = (() => {
   let state = {
     running:false, paused:false, over:false, composing:false,
@@ -91,6 +93,9 @@ export const TypingEngine = (() => {
 
     if(k===need){
       state.ok++; state.typedRaw += k; state.idx++;
+      // ★ 正打のタッチ音
+      Sound.click();
+
       el().remain.textContent = state.seqRaw.slice(state.idx).split("").join(" ");
       const next = state.seqRaw[state.idx];
       if(next){
@@ -98,11 +103,15 @@ export const TypingEngine = (() => {
         if(code){ window.KeyboardUI?.clearTargets(); window.KeyboardUI?.highlightTarget(code); }
       }else{
         // このセット終了：新しいランダム列を生成して続ける
+        // ★ このセットをクリアした！ご褒美音を鳴らす
+        Sound.success();
         const newSeq = state.generator ? state.generator() : "f j f j";
         setSequence(newSeq);
       }
     }else{
       state.ng++;
+      // ★ ミスのビープ音
+      Sound.beep();
       // ミス時はターゲット維持
     }
     refreshHUD();
@@ -128,6 +137,13 @@ export const TypingEngine = (() => {
       document.getElementById("btn-start")?.addEventListener("click", ()=> start());
       document.getElementById("btn-pause")?.addEventListener("click", pause);
       document.getElementById("btn-reset")?.addEventListener("click", reset);
+      // ← ミュート連動（既存のチェックボックスを活用）
+      const mute = document.getElementById("chk-mute");
+      if (mute) {
+        Sound.setMute(mute.checked);
+        mute.addEventListener("change", () => Sound.setMute(mute.checked));
+      }
+    
     },
     unmount(){
       clearInterval(state.timer);

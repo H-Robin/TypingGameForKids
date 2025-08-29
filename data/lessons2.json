@@ -1,0 +1,82 @@
+{
+  "lessons": [
+    {
+      "id": "L2_p1_Z/",
+      "title": "Lesson2 - No.1 Z・/",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["z", "/"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L2_p2_X.",
+      "title": "Lesson2 - No.2 X・.",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["x", "."],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L2_p3_BN",
+      "title": "Lesson2 - No.3 B・N",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["b", "n"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L2_p4_VM",
+      "title": "Lesson2 - No.4 V・M",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["v", "m"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L2_p5_C,",
+      "title": "Lesson2 - No.5 C・,",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["c", ","],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L2_p6_all",
+      "title": "Lesson2 - No.6 Z〜. 全部",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "random",
+        "keys": ["z","x","c","v","b","n","m",",","."],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    }
+  ]
+}

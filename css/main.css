@@ -1,3 +1,176 @@
+/* ヘッダーを中央揃え */
+#header {
+  display: flex;
+  flex-direction: column;  /* タイトルとナビを上下に並べる */
+  justify-content: center; /* 横方向中央揃え */
+  align-items: center;     /* 縦方向中央揃え */
+  padding: 1rem;
+  background: #f9fafb;     /* 任意: 薄いグレー背景 */
+}
+
+#header h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#header nav {
+  margin-top: 0.5rem;
+}
+
+#header nav a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: #374151;
+  font-weight: 600;
+}
+
+#header nav a:hover {
+  color: #1d4ed8; /* 青に */
+}
+
+/* home ページ全体を中央に配置 */
+.home-view {
+  display: flex;
+  justify-content: center; /* 横方向中央 */
+  align-items: center;     /* 縦方向中央 */
+  min-height: 100vh;       /* 画面全体を高さに */
+  text-align: center;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;               /* 要素間の余白 */
+}
+
+.home-container h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.home-container p {
+  margin: 0 0 1rem 0;
+}
+
+.home-container .menu {
+  display: flex;
+  flex-direction: column;  /* ボタンを縦並び */
+  gap: 0.75rem;
+}
+
+.home-container .menu button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 2px solid #4f46e5;
+  background: #fff;
+  color: #4f46e5;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.home-container .menu button:hover {
+  background: #eef2ff;
+}
+
+/* lessons ページのヘッダー部分を中央寄せ */
+#lessons h2,
+#lessons p {
+  text-align: center;
+}
+
+#lessons h2 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+#lessons p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #374151; /* 任意で落ち着いた色 */
+}
+
+/* ホーム画面を中央に配置 */
+.home-view {
+  display: flex;
+  align-items: center;   /* 縦方向中央 */
+  justify-content: center; /* 横方向中央 */
+  min-height: 100vh;     /* 画面全体の高さを使う */
+  text-align: center;
+}
+
+.home-container {
+  max-width: 600px;
+}
+
+/* === Footer === */
+footer {
+  display: flex;
+  justify-content: center; /* 横方向中央 */
+  align-items: center;     /* 縦方向中央 */
+  padding: 1rem;
+  background: #f9fafb;     /* 任意: 薄いグレー背景に統一 */
+}
+
+footer small {
+  font-size: 0.9rem;
+  color: #374151;
+}
+/* === Responsive: HUD/Buttons/Cards === */
+.hud {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .5rem;
+}
+@media (max-width: 900px) {
+  .hud { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .hud { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ボタンはタップしやすく */
+button, .menu button {
+  min-height: 44px;           /* Apple推奨タップサイズ */
+  padding: .75rem 1rem;
+  font-size: clamp(14px, 2.5vw, 16px);
+}
+
+/* レッスンカードのグリッド */
+.lesson-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+@media (max-width: 1024px) {
+  .lesson-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .lesson-grid { grid-template-columns: 1fr; }
+}
+
+/* drills ボタンは2〜3列→小画面で1列 */
+.drills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .5rem;
+}
+@media (max-width: 640px) {
+  .drills { grid-template-columns: 1fr; }
+}
+
+/* === Responsive: page paddings & safe area === */
+body {
+  padding-left: max(12px, env(safe-area-inset-left));
+  padding-right: max(12px, env(safe-area-inset-right));
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 /* === Practice HUD === */
 .hud {
   display: flex;
@@ -85,5 +258,46 @@ label.mute { display: inline-flex; align-items: center; gap: .4rem; font-weight:
 #keyboard-area g.pressed { transform: none !important; filter: none !important; }
 
 /* ターゲット枠は rect 限定。文字は太らせない */
-#keyboard-area .key.target > rect { stroke:#ef4444; stroke-width:3; }
+/* --- Target highlight: group/rect 両対応 --- */
+#keyboard-area .key.target rect,
+#keyboard-area rect.target {
+  stroke: #ef4444;
+  stroke-width: 4;
+  fill: #fef2f2; /* 背景をほんのり赤く（不要なら消してOK） */
+}
 #keyboard-area .key.target .label { stroke:none; }
+
+/* === SVG keyboard: 決定版（左右とも赤枠＆沈み込み）=== */
+
+/* デフォルト見た目（薄い灰、落ち着いた文字色） */
+#keyboard-area .key rect {
+  fill: #f3f4f6;
+  stroke: #d1d5db;
+  stroke-width: 2;
+}
+#keyboard-area .label {
+  fill: #374151;
+  font: 600 12px/1 system-ui, Arial;
+  stroke: none;
+}
+
+/* 押下は rect 自体に .pressed を付ける（<g>のtransformを壊さない） */
+#keyboard-area rect.pressed {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translateY(2px);
+  filter: drop-shadow(0 2px 0 #b6c0ff);
+  transition: transform .08s ease;
+}
+/* 保険：<g class="pressed"> が付いてもレイアウトを動かさない */
+#keyboard-area g.pressed { transform: none !important; filter: none !important; }
+
+/* 次に押すキー＝赤い四角（<g>.target / rect.target の両対応） */
+#keyboard-area .key.target rect,
+#keyboard-area rect.target {
+  stroke: #ef4444;
+  stroke-width: 4;
+  fill: #fef2f2; /* 背景をほんのり赤に。不要なら削除OK */
+}
+/* 文字は太縁にならないように */
+#keyboard-area .key.target .label { stroke: none; }

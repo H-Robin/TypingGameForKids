@@ -1,0 +1,82 @@
+{
+  "lessons": [
+    {
+      "id": "L4_p1_56",
+      "title": "Lesson4 - No.1 5・6",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["5","6"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L4_p2_47",
+      "title": "Lesson4 - No.2 4・7",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["4","7"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L4_p3_38",
+      "title": "Lesson4 - No.3 3・8",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["3","8"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L4_p4_29",
+      "title": "Lesson4 - No.4 2・9",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["2","9"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L4_p5_10",
+      "title": "Lesson4 - No.5 1・0",
+      "mode": "drill",
+      "durationSec": 15,
+      "generator": {
+        "type": "random",
+        "keys": ["1","0"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    },
+    {
+      "id": "L4_p6_full",
+      "title": "Lesson4 - No.6 数字キー全部",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "random",
+        "keys": ["1","2","3","4","5","6","7","8","9","0"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": " "
+      }
+    }
+  ]
+}

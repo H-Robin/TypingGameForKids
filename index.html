@@ -2,36 +2,38 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Typing App</title>
+  <!-- 小画面・ノッチ端末対応（viewport-fit=cover 追加） -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>いつでもタイピング</title>
   <link rel="stylesheet" href="./css/main.css" />
 </head>
 <body>
-  <!-- 共通ヘッダー -->
-  <header>
-    <h1>キッズ・タイピング</h1>
+  <!-- 共通ヘッダー（中央寄せは CSS 側で適用） -->
+  <header id="header">
+    <h1>いつでもタイピング</h1>
     <nav>
       <a href="#/home">ホーム</a>
-      <a href="#/practice">練習</a>
-      <a href="#/timeattack">タイムアタック</a>
+      <a href="#/lessons">レッスンを選ぶ</a>
       <a href="#/settings">設定</a>
     </nav>
   </header>
 
-  <!-- 各画面を差し込む場所 -->
-  <main id="app">
-    <!-- views/home.html などがここに読み込まれる -->
+  <!-- 画面コンテナ -->
+  <main id="app" role="main" aria-live="polite">
+    <!-- views/*.html がここに読み込まれます -->
   </main>
 
-  <!-- 共通フッター（任意） -->
+  <!-- 共通フッター（中央寄せは CSS 側で適用） -->
   <footer>
-    <small>&copy; 2025 Kids Typing</small>
+    <small>&copy; 2025 いつでもタイピング</small>
   </footer>
 
-  <!-- index.html の最後あたり -->
+  <!-- スクリプト（順序重要） -->
   <script src="./js/router.js" type="module"></script>
   <script src="./js/keyboard.js"></script>
+  <script src="./js/sound.js" type="module"></script>
   <script src="./js/typing-engine.js" type="module"></script>
+  <script src="./js/lessons.js" type="module"></script> <!-- ★追加：レッスンJSON読込 -->
   <script src="./js/app.js" type="module"></script>
 </body>
 </html>

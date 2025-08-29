@@ -1,49 +1,23 @@
 <section id="lessons" class="view">
-  <h2>レッスンを選ぼう</h2>
-  <p>Lesson をえらんで、No をクリックすると練習がはじまるよ</p>
-
+  <p>レッスン の中から番号をクリックすると練習がはじまるよ</p>
   <div class="lesson-grid">
-    <!-- Lesson 1 -->
-    <div class="lesson-card" data-lesson="L1">
-      <h3>Lesson 1（ホーム中心）</h3>
-      <div class="drills">
-        <button class="drill" data-drill="p1_GH">No.1 G・H</button>
-        <button class="drill" data-drill="p2_FJ">No.2 F・J</button>
-        <button class="drill" data-drill="p3_FGHJ">No.3 F・G・H・J</button>
-        <button class="drill" data-drill="p4_DK">No.4 D・K</button>
-        <button class="drill" data-drill="p5_ASL">No.5 A・S・L</button>
-        <button class="drill" data-drill="p6_ASDFJKI">No.6 A・S・D・F・J・K・I</button>
-      </div>
+    <!-- JSONから動的にカードを挿入する -->
+    <div class="lesson-card" data-json="./data/lessons1.json" data-lesson="L1">
+      <h3>Lesson 1</h3>
+      <div class="drills"></div>
     </div>
-
-    <!-- Lesson 2 -->
-    <div class="lesson-card" data-lesson="L2">
-      <h3>Lesson 2（ホーム＋周辺）</h3>
-      <div class="drills">
-        <button class="drill" data-drill="p1_GH">No.1 G・H</button>
-        <button class="drill" data-drill="p2_FJ">No.2 F・J</button>
-        <button class="drill" data-drill="p3_FGHJ">No.3 F・G・H・J</button>
-        <button class="drill" data-drill="p4_DK">No.4 D・K</button>
-        <button class="drill" data-drill="p5_ASL">No.5 A・S・L</button>
-        <button class="drill" data-drill="p6_ASDFJKI">No.6 A・S・D・F・J・K・I</button>
-      </div>
+    <div class="lesson-card" data-json="./data/lessons2.json" data-lesson="L2">
+      <h3>Lesson 2</h3>
+      <div class="drills"></div>
     </div>
-
-    <!-- Lesson 3 -->
-    <div class="lesson-card" data-lesson="L3">
-      <h3>Lesson 3（広くチャレンジ）</h3>
-      <div class="drills">
-        <button class="drill" data-drill="p1_GH">No.1 G・H</button>
-        <button class="drill" data-drill="p2_FJ">No.2 F・J</button>
-        <button class="drill" data-drill="p3_FGHJ">No.3 F・G・H・J</button>
-        <button class="drill" data-drill="p4_DK">No.4 D・K</button>
-        <button class="drill" data-drill="p5_ASL">No.5 A・S・L</button>
-        <button class="drill" data-drill="p6_ASDFJKI">No.6 A・S・D・F・J・K・I</button>
-      </div>
+    <div class="lesson-card" data-json="./data/lessons3.json" data-lesson="L2">
+      <h3>Lesson 3</h3>
+      <div class="drills"></div>
+    </div>
+      <div class="lesson-card" data-json="./data/lessons4.json" data-lesson="L2">
+      <h3>Lesson 4</h3>
+      <div class="drills"></div>
     </div>
   </div>
 
-  <div class="menu">
-    <button data-link="#/home">← ホームへ</button>
-  </div>
 </section>
