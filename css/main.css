@@ -1,17 +1,22 @@
-/* ヘッダーを中央揃え */
+/* ヘッダー背景に画像を設定 & 中央寄せ */
 #header {
   display: flex;
   flex-direction: column;  /* タイトルとナビを上下に並べる */
   justify-content: center; /* 横方向中央揃え */
   align-items: center;     /* 縦方向中央揃え */
-  padding: 1rem;
-  background: #f9fafb;     /* 任意: 薄いグレー背景 */
+  padding: 1.5rem 1rem;
+  background: url("/assets/imgs/topimg.png") no-repeat center 70%;
+  background-size: cover;
+  min-height: 120px; /* 高さは任意に調整 */
+  color: #fff;             /* 文字色は白 */
+  text-align: center;
 }
 
 #header h1 {
   margin: 0;
   font-size: 2rem;
   font-weight: bold;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* 背景に負けない */
 }
 
 #header nav {
@@ -21,12 +26,13 @@
 #header nav a {
   margin: 0 0.5rem;
   text-decoration: none;
-  color: #374151;
+  color: #fff;             /* リンクも白に統一 */
   font-weight: 600;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
 
 #header nav a:hover {
-  color: #1d4ed8; /* 青に */
+  color: #ffeb3b;          /* ホバー時は黄色でアクセント */
 }
 
 /* home ページ全体を中央に配置 */

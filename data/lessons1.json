@@ -2,42 +2,42 @@
   "lessons": [
     {
       "id": "p1_GH",
-      "title": "1) G・H（両手）",
+      "title": "G・H",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": { "type": "random", "keys": ["g","h"], "lengthMin": 4, "lengthMax": 8, "sep": " " }
     },
     {
       "id": "p2_FJ",
-      "title": "2) F・J（両手）",
+      "title": "F・J",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": { "type": "random", "keys": ["f","j"], "lengthMin": 4, "lengthMax": 8, "sep": " " }
     },
     {
       "id": "p3_FGHJ",
-      "title": "3) F・G・H・J（両手）",
+      "title": "F・G・H・J",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": { "type": "random", "keys": ["f","g","h","j"], "lengthMin": 4, "lengthMax": 8, "sep": " " }
     },
     {
       "id": "p4_DK",
-      "title": "4) D・K（両手）",
+      "title": "D・K",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": { "type": "random", "keys": ["d","k"], "lengthMin": 4, "lengthMax": 8, "sep": " " }
     },
     {
       "id": "p5_ASL",
-      "title": "5) A・S・L（両手）",
+      "title": "A・S・L",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": { "type": "random", "keys": ["a","s","l"], "lengthMin": 4, "lengthMax": 8, "sep": " " }
     },
     {
       "id": "p6_ASDFJKI",
-      "title": "6) A・S・D・F・J・K・I（両手）",
+      "title": "A・S・D・F・J・K・I",
       "mode": "drill",
       "durationSec": 45,
       "generator": { "type": "random", "keys": ["a","s","d","f","j","k","i"], "lengthMin": 4, "lengthMax": 8, "sep": " " }

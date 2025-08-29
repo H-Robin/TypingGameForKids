@@ -2,9 +2,9 @@
   "lessons": [
     {
       "id": "L3_p1_ty",
-      "title": "Lesson3 - No.1 T・Y",
+      "title": " T・Y",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": {
         "type": "random",
         "keys": ["t", "y"],
@@ -15,9 +15,9 @@
     },
     {
       "id": "L3_p2_ru",
-      "title": "Lesson3 - No.2 R・U",
+      "title": "R・U",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": {
         "type": "random",
         "keys": ["r", "u"],
@@ -28,9 +28,9 @@
     },
     {
       "id": "L3_p3_ei",
-      "title": "Lesson3 - No.3 E・I",
+      "title": "E・I",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": {
         "type": "random",
         "keys": ["e", "i"],
@@ -41,9 +41,9 @@
     },
     {
       "id": "L3_p4_wo",
-      "title": "Lesson3 - No.4 W・O",
+      "title": "W・O",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": {
         "type": "random",
         "keys": ["w", "o"],
@@ -54,9 +54,9 @@
     },
     {
       "id": "L3_p5_qp",
-      "title": "Lesson3 - No.5 Q・P",
+      "title": "Q・P",
       "mode": "drill",
-      "durationSec": 15,
+      "durationSec": 30,
       "generator": {
         "type": "random",
         "keys": ["q", "p"],
@@ -67,7 +67,7 @@
     },
     {
       "id": "L3_p6_full",
-      "title": "Lesson3 - No.6 Q〜P 全部",
+      "title": "Q〜P 全部",
       "mode": "drill",
       "durationSec": 45,
       "generator": {
