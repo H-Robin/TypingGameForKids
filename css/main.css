@@ -76,10 +76,35 @@
   font-weight: 700;
   cursor: pointer;
 }
+/* home のメニュー内アンカーもボタン風に */
+.home-container .menu a {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: 2px solid #4f46e5;
+  background: #fff;
+  color: #4f46e5;
+  font-weight: 700;
+  cursor: pointer;
+}
+.home-container .menu a:hover {
+  background: #eef2ff;
+}
+
+/* 任意：ゴースト（白地）ボタン用クラス */
+.ghost-btn {
+  border-color: #4f46e5;
+  background: #fff;
+  color: #4f46e5;
+}
 
 .home-container .menu button:hover {
   background: #eef2ff;
 }
+
 
 /* lessons ページのヘッダー部分を中央寄せ */
 #lessons h2,

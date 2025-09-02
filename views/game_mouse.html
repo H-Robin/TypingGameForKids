@@ -1,0 +1,34 @@
+<section id="mouse" class="view mouse-view">
+  <main class="app">
+    <header class="header">
+      <h1>マウス操作トレーニング（3×3）</h1>
+      <div class="controls">
+        <label class="time-input">
+          制限時間：
+          <input id="durationInput" type="number" min="5" max="180" step="5" value="30" />
+          <span>秒</span>
+        </label>
+        <button id="startBtn" class="btn primary">開始</button>
+        <button id="resetBtn" class="btn">リセット</button>
+        <button data-link="#/home" class="btn secondary">戻る</button>
+      </div>
+      <div class="status">
+        <div>残り時間：<span id="timeLeft">30.0</span> 秒</div>
+        <div>得点：<span id="score">0</span></div>
+        <div>叩いた光の数：<span id="hits">0</span></div>
+      </div>
+    </header>
+
+    <section class="board" id="board" aria-label="3×3 反応ボード"></section>
+
+    <footer class="notes">
+      <ul>
+        <li>光っているマスを<strong>クリック/タップ</strong>すると +1 点。</li>
+        <li>外すと −1 点。光は 1 秒で自動消灯します。</li>
+      </ul>
+    </footer>
+  </main>
+  <!-- ゲーム用 JS/CSS を読み込み -->
+  <script src="../js/game-mouse.js"></script>
+  <link rel="stylesheet" href="../css/game_mouse.css" />
+</section>

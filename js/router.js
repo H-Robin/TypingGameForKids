@@ -8,6 +8,7 @@ const routes = {
    "/timeattack": "views/timeattack.html",
    "/settings":   "views/settings.html",
    "/result":     "views/result.html",
+   "/mouse":      "views/game_mouse.html",
 };
 
   const DEFAULT_ROUTE = "/home";
@@ -63,13 +64,18 @@ const routes = {
   // 差し込み＋マウントイベント発火
   function mountView(path, html) {
     appEl.innerHTML = html;
-    // スクロール位置リセット
+
+    // 追加：挿入された <script> を実行（外部/インライン両対応）
+    const scriptNodes = Array.from(appEl.querySelectorAll("script"));
+    for (const old of scriptNodes) {
+      const s = document.createElement("script");
+      for (const attr of old.attributes) s.setAttribute(attr.name, attr.value);
+      if (!old.src) s.textContent = old.textContent || "";
+      old.replaceWith(s); // これで実行される（srcありはネットワーク読み込み）
+    }
+
     window.scrollTo(0, 0);
-    // 画面ごとの初期化を知らせるカスタムイベント
-    // app.js などで: document.addEventListener("view:mounted", (e)=>{ if(e.detail.path==="/practice"){ ... } })
-    const ev = new CustomEvent("view:mounted", {
-      detail: { path, container: appEl }
-    });
+    const ev = new CustomEvent("view:mounted", { detail: { path, container: appEl } });
     document.dispatchEvent(ev);
   }
 
