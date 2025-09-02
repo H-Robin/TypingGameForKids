@@ -8,7 +8,7 @@
   background: url("/assets/imgs/topimg.png") no-repeat center 70%;
   background-size: cover;
   min-height: 80px; /* 高さは任意に調整 */
-  color: #fff;             /* 文字色は白 */
+  color: #e3ff2b;             /* 文字色は白 */
   text-align: center;
 }
 
@@ -24,15 +24,28 @@
 }
 
 #header nav a {
+  display: inline-block;
   margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #0ff;                  /* シアンの枠線 */
+  border-radius: 6px;
+  background: rgba(0,0,0,0.4);             /* 半透明ブラック背景 */
+  color: rgb(255, 255, 255);                             /* 文字色もシアン */
+  font-weight: 700;
   text-decoration: none;
-  color: #fff;             /* リンクも白に統一 */
-  font-weight: 600;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  text-shadow: 0 0 6px rgba(0,255,255,0.8);/* 発光文字 */
+  box-shadow: 0 0 8px rgba(0,255,255,0.6); /* 外枠発光 */
+  transition: all 0.3s ease;
 }
 
 #header nav a:hover {
-  color: #ffeb3b;          /* ホバー時は黄色でアクセント */
+  background: rgba(0,255,255,0.15);        /* ホバーで内側に光を追加 */
+  color: #fff;                             /* 文字を白に */
+  border-color: #ff00ff;                   /* 枠をマゼンタに変化 */
+  text-shadow: 0 0 8px rgba(255,0,255,0.9),
+               0 0 12px rgba(0,255,255,0.8);
+  box-shadow: 0 0 12px rgba(255,0,255,0.8),
+              0 0 20px rgba(0,255,255,0.6);
 }
 
 /* home ページ全体を中央に配置 */
@@ -66,34 +79,32 @@
   gap: 0.75rem;
 }
 
+/* === サイバー風ボタン（ホーム画面用） === */
 .home-container .menu button {
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
-  border-radius: 8px;
-  border: 2px solid #4f46e5;
-  background: #fff;
-  color: #4f46e5;
-  font-weight: 700;
-  cursor: pointer;
-}
-/* home のメニュー内アンカーもボタン風に */
-.home-container .menu a {
   display: inline-block;
-  text-align: center;
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 1.1rem;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid #0ff;                   /* シアン枠 */
   border-radius: 8px;
-  border: 2px solid #4f46e5;
-  background: #fff;
-  color: #4f46e5;
-  font-weight: 700;
+  background: rgba(0,0,0,0.5);              /* 半透明ブラック背景 */
+  color: #0ff;                              /* 文字色シアン */
+  font-weight: 800;
+  font-size: 1.1rem;
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(0,255,255,0.8); /* ネオン文字 */
+  box-shadow: 0 0 8px rgba(0,255,255,0.6);  /* 外枠発光 */
   cursor: pointer;
-}
-.home-container .menu a:hover {
-  background: #eef2ff;
+  transition: all 0.3s ease;
 }
 
+.home-container .menu button:hover {
+  background: rgba(0,255,255,0.15);         /* 内側に光 */
+  color: #fff;                              /* 文字を白に */
+  border-color: #ff00ff;                    /* 枠をマゼンタに */
+  text-shadow: 0 0 8px rgba(255,0,255,0.9),
+               0 0 12px rgba(0,255,255,0.8);
+  box-shadow: 0 0 12px rgba(255,0,255,0.8),
+              0 0 20px rgba(0,255,255,0.6);
+}
 /* 任意：ゴースト（白地）ボタン用クラス */
 .ghost-btn {
   border-color: #4f46e5;

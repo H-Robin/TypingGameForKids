@@ -1,66 +1,84 @@
+/* === Mouse game: scoped styles (SPA safe) === */
+.mouse-view {
+  /* このビュー専用の余白だけ調整。サイト全体のbodyや#headerは触らない */
+  padding: 1rem;
+}
+
+/* タイトル（共通ヘッダーとは別） */
+.mouse-view .mouse-title {
+  margin: 0 0 12px;
+  font-size: clamp(15px, 2.4vw, 28px);
+  letter-spacing: .02em;
+  text-align: center;
+}
+
+.mouse-view .mouse-app{
+  /* カード風の器。色味は目立ちすぎないよう薄め */
+  width: min(900px, 92vw);
+  margin: 0 auto;
+  padding: 16px;
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+}
+
+.mouse-view .controls{
+  display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:center;
+  margin:8px 0 10px;
+}
+.mouse-view .time-input{ display:inline-flex; align-items:center; gap:8px; font-size:14px; color:#6b7280 }
+.mouse-view .time-input input{
+  width:80px; padding:6px 10px; border-radius:10px; border:1px solid #d1d5db; background:#fff; color:#111;
+}
+
+.mouse-view .btn{
+  appearance:none; border:none; padding:8px 14px; border-radius:12px; background:#1f2937; color:#fff;
+  cursor:pointer; transition:transform .06s, box-shadow .2s, background .2s; border:1px solid rgba(255,255,255,.08);
+}
+.mouse-view .btn:hover{ background:#243041 }
+.mouse-view .btn:active{ transform:translateY(1px) }
+.mouse-view .btn.primary{
+  background:linear-gradient(180deg,#0ea5e9,#0284c7);
+  border:none; box-shadow:0 8px 18px rgba(56,189,248,.25)
+}
+.mouse-view .btn.secondary{ background:#fff; color:#111; border:1px solid #e5e7eb }
+
+.mouse-view .status{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:8px; padding:10px; background:#f8fafc;
+  border-radius:14px; border:1px solid #e5e7eb; font-size:clamp(14px,1.8vw,16px); text-align:center;
+}
+
+/* 盤面：コンパクト＆中央寄せ */
+.mouse-view .board{
+  margin:18px auto 0; width:min(400px, 90%); aspect-ratio:1/1;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px; padding:12px;
+  background:#0b1220; border-radius:16px; border:1px solid rgba(255,255,255,.06);
+}
+
+/* 色・トーン（黄色ライト用の変数） */
 :root{
-  --bg:#0f172a;--panel:#111827;--text:#e5e7eb;--muted:#9ca3af;
-  /* ★ ライト色を水色→黄色へ */
   --accent:#facc15;                         /* yellow-400 */
-  --accent-glow:rgba(250,204,21,0.6);       /* 強めの発光 */
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans JP",sans-serif;
-  background:radial-gradient(1200px 800px at 50% -10%,#1f2937 0%,var(--bg) 60%);
-  color:var(--text);display:grid;place-items:center;
-}
-.app{
-  width:min(920px,92vw);padding:24px;border-radius:20px;
-  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-  border:1px solid rgba(255,255,255,.08);
-  box-shadow:0 10px 40px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.05);
-}
-.header h1{margin:0 0 12px;font-size:clamp(18px,2.4vw,28px);letter-spacing:.02em}
-.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 0 10px}
-.time-input{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--muted)}
-.time-input input{
-  width:80px;padding:6px 10px;border-radius:10px;border:1px solid rgba(255,255,255,.12);
-  background:#0b1220;color:var(--text);
-}
-.btn{
-  appearance:none;border:none;padding:8px 14px;border-radius:12px;background:#1f2937;color:var(--text);
-  cursor:pointer;transition:transform .06s, box-shadow .2s, background .2s;border:1px solid rgba(255,255,255,.08);
-}
-.btn:hover{background:#243041}
-.btn:active{transform:translateY(1px)}
-/* 開始ボタンはそのまま（必要なら黄色に変えてOK） */
-.btn.primary{background:linear-gradient(180deg,#0ea5e9,#0284c7);border:none;box-shadow:0 8px 18px rgba(56,189,248,.25)}
-.btn.secondary{background:#fff;color:#111;border:1px solid #e5e7eb}
-.status{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px;padding:10px;background:#0b1220;
-  border-radius:14px;border:1px solid rgba(255,255,255,.06);font-size:clamp(14px,1.8vw,16px);
+  --accent-glow:rgba(250,204,21,0.6);
+  --muted:#9ca3af;
 }
 
-/* ★ 盤面サイズをコンパクトに（中央寄せ＆最大幅制限） */
-.board{
-  margin:18px auto 0;                /* 中央寄せ */
-  width:min(500px,90%);              /* 最大500px、画面に応じて縮小 */
-  aspect-ratio:1/1;
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:12px;padding:12px;background:#0b1220;border-radius:16px;border:1px solid rgba(255,255,255,.06);
-}
-
-.cell{
-  position:relative;border-radius:14px;background:#111827;border:1px solid rgba(255,255,255,.04);
-  box-shadow:inset 0 0 0 1px rgba(0,0,0,.3);display:grid;place-items:center;user-select:none;-webkit-tap-highlight-color:transparent;
+/* マス */
+.mouse-view .cell{
+  position:relative; border-radius:14px; background:#111827; border:1px solid rgba(255,255,255,.04);
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.3);
+  display:grid; place-items:center; user-select:none; -webkit-tap-highlight-color:transparent;
   transition:transform .05s, background .2s, box-shadow .2s;
 }
-.cell:active{transform:scale(.99)}
-.cell::after{
-  content:"";position:absolute;inset:10%;border-radius:12px;
-  background:radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,.05), transparent 60%);opacity:.7;pointer-events:none;
+.mouse-view .cell:active{ transform:scale(.99) }
+.mouse-view .cell::after{
+  content:""; position:absolute; inset:10%; border-radius:12px;
+  background:radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,.05), transparent 60%);
+  opacity:.7; pointer-events:none;
 }
 
-/* ★ ライトを黄色＆明るく */
-.cell.lit{
-  /* 中央を強く光らせる */
+/* ライト（黄色＆明るめ） */
+.mouse-view .cell.lit{
   background:
     radial-gradient(circle at center,
       rgba(250,204,21,0.85) 0%,
@@ -77,11 +95,10 @@ body{
   animation:pulse 1s ease-out;
 }
 
-/* ★ 黄色用にパルスも調整 */
 @keyframes pulse{
   0%  { box-shadow:0 0 0 0 rgba(250,204,21,.55), inset 0 0 36px rgba(250,204,21,.45); }
   100%{ box-shadow:0 0 0 14px rgba(250,204,21,0), inset 0 0 8px rgba(250,204,21,.18); }
 }
 
-.notes{color:var(--muted);font-size:13px;margin-top:14px}
-.notes ul{margin:0 0 0 18px;padding:0}
+.mouse-view .notes{ color:var(--muted); font-size:13px; margin-top:14px; text-align:center; }
+.mouse-view .notes ul{ margin:0 0 0 18px; padding:0; display:inline-block; text-align:left; }
