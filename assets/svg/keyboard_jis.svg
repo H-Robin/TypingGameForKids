@@ -1,5 +1,5 @@
 <!-- JIS 109配列のメインブロック（テンキー/ファンクション列は別途） -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 360" aria-label="JIS Keyboard Main Block">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 40 1020 320" aria-label="JIS Keyboard Main Block">
   <style>
     .key rect{ fill:#f3f4f6; stroke:#d1d5db; stroke-width:2 }
     .label{ fill:#374151; font:600 12px/1 system-ui,Arial; user-select:none }

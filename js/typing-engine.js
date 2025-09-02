@@ -59,11 +59,16 @@ export const TypingEngine = (() => {
     state.ok = 0; state.ng = 0; state.typedRaw = "";
     state.remain = state.totalSec;
     // ここでジェネレータから初期シーケンスを生成
-    const firstSeq = state.generator ? state.generator() : "f j f j f j f j";
+    const firstSeq = state.generator ? state.generator() : "Spaceボタンを押してスタート";
     setSequence(firstSeq);
     el().fb.textContent = "がんばれ！";
     refreshHUD();
     clearInterval(state.timer); state.timer = setInterval(tick,1000);
+　  // ★ キーボードを下に合わせて表示
+　  const kb = document.getElementById("keyboard-area");
+　  if (kb) {
+　    kb.scrollIntoView({ behavior: "smooth", block: "end" });
+　　 }
   }
 
   function pause(){ if(!state.running||state.over) return; state.paused=true; el().fb.textContent="一時停止中（Enterで再開）"; }

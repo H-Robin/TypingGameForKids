@@ -7,7 +7,7 @@
   padding: 1.5rem 1rem;
   background: url("/assets/imgs/topimg.png") no-repeat center 70%;
   background-size: cover;
-  min-height: 120px; /* 高さは任意に調整 */
+  min-height: 80px; /* 高さは任意に調整 */
   color: #fff;             /* 文字色は白 */
   text-align: center;
 }
@@ -139,9 +139,9 @@ footer small {
 
 /* ボタンはタップしやすく */
 button, .menu button {
-  min-height: 44px;           /* Apple推奨タップサイズ */
-  padding: .75rem 1rem;
-  font-size: clamp(14px, 2.5vw, 16px);
+  min-height: 32px;           /* Apple推奨タップサイズ */
+  padding: 0.4rem 0.8rem;       /* 内側余白を減らす */
+  font-size: clamp(10px, 2vw, 12px); /* フォントをやや小さめに */
 }
 
 /* レッスンカードのグリッド */
