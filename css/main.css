@@ -5,7 +5,7 @@
   justify-content: center; /* 横方向中央揃え */
   align-items: center;     /* 縦方向中央揃え */
   padding: 1.5rem 1rem;
-  background: url("/assets/imgs/topimg.png") no-repeat center 70%;
+  background: url("./imgs/topimg.png") no-repeat center 70%;
   background-size: cover;
   min-height: 80px; /* 高さは任意に調整 */
   color: #e3ff2b;             /* 文字色は白 */
@@ -242,9 +242,21 @@ body {
 }
 .lesson-card h3 { margin: .2rem 0 .8rem; }
 .drills { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
-.drills .drill { padding: .6rem .8rem; border-radius: 10px; border: 2px solid #4f46e5; background: #fff; color: #4f46e5; font-weight: 800; cursor: pointer; }
-.drills .drill:hover { background: #eef2ff; }
-
+/* 既存(.drill)に加えて、ひらがな練習の data-lesson-id ボタンにも同スタイルを適用 */
+.drills .drill,
+.drills [data-lesson-id] {
+  padding: .6rem .8rem;
+  border-radius: 10px;
+  border: 2px solid #4f46e5;
+  background: #fff;
+  color: #4f46e5;
+  font-weight: 800;
+  cursor: pointer;
+}
+.drills .drill:hover,
+.drills [data-lesson-id]:hover {
+  background: #eef2ff;
+}
 /* === Practice main === */
 .practice-main { max-width: 980px; margin: 0 auto; text-align: center; padding: 1rem; }
 .prompt .kana { font-size: 1.1rem; color: #667; margin-top: .3rem; }
@@ -260,6 +272,30 @@ label.mute { display: inline-flex; align-items: center; gap: .4rem; font-weight:
 .keyboard-area { margin-top: 12px; min-height: 140px; background: #f8faff; border: 1px dashed #dbe3ff; border-radius: 12px; display: grid; place-items: center; }
 .placeholder { color: #94a3b8; }
 
+/* === Kana Practice main === */
+/* === ひらがな練習：2段表示 === */
+.seq {
+  margin: 1rem 0 1.25rem;
+  text-align: center;
+}
+
+.roma-line {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 0.18rem;   /* 1文字ずつ少し間隔を空ける */
+  line-height: 1.25;
+  word-break: break-all;
+}
+
+.kana-line {
+  margin-top: 4px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #444;
+  letter-spacing: 0.06rem;
+  line-height: 1.2;
+  word-break: keep-all;
+}
 
 /* --- SVG keyboard fixes (final) --- */
 /* デフォルト：薄い灰で統一 */

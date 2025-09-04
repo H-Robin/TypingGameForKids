@@ -8,12 +8,13 @@ export const Lessons = (() => {
     db = await res.json();
     return db;
   }
+
   function get(id) {
     if (!db) throw new Error("Lessons not loaded");
     return (db.lessons || []).find(l => l.id === id) || null;
   }
 
-  // ランダムジェネレータ（4〜8などの可変長）
+  // ランダムジェネレータ（1文字 or 複数トークン対応）
   function makeRandomGenerator({ keys, lengthMin = 4, lengthMax = 8, sep = " " }) {
     const pool = (keys || []).map(k => String(k).toLowerCase());
     function randint(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
@@ -28,6 +29,7 @@ export const Lessons = (() => {
   function makeGenerator(lesson) {
     const g = lesson?.generator || {};
     if (g.type === "random") return makeRandomGenerator(g);
+   if (g.type === "randomTokens") return makeRandomGenerator(g); // ★追加
     if (g.type === "repeat") {
       const pattern = String(g.pattern || "");
       return () => pattern;

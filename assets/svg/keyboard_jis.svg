@@ -38,29 +38,73 @@
     </g>
   </g>
 
-  <!-- 2段目（Tab + Q〜P + [ ] + Enter（L字想定の手前まで）） -->
-  <g transform="translate(40,120)">
-    <g id="key-Tab" class="key" transform="translate(0,0)">
-      <rect width="84" height="40" rx="6"/><text class="label" x="14" y="26">Tab</text>
-    </g>
-    <g id="key-KeyQ" class="key" transform="translate(90,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">Q</text></g>
-    <g id="key-KeyW" class="key" transform="translate(150,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">W</text></g>
-    <g id="key-KeyR" class="key" transform="translate(210,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">R</text></g>
-    <g id="key-KeyT" class="key" transform="translate(270,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">T</text></g>
-    <g id="key-KeyY" class="key" transform="translate(330,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">Y</text></g>
-    <g id="key-KeyU" class="key" transform="translate(390,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">U</text></g>
-    <g id="key-KeyI" class="key" transform="translate(450,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">I</text></g>
-    <g id="key-KeyO" class="key" transform="translate(510,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">O</text></g>
-    <g id="key-KeyP" class="key" transform="translate(570,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">P</text></g>
-    <g id="key-BracketLeft"  class="key" transform="translate(630,0)"><rect width="56" height="40" rx="6"/><text class="label" x="12" y="26">[ {</text></g>
-    <g id="key-BracketRight" class="key" transform="translate(690,0)"><rect width="56" height="40" rx="6"/><text class="label" x="12" y="26">] }</text></g>
-    <!-- Enter：2段目のみ／横長、重ならない寸法 -->
-    <g id="key-Enter" class="key" transform="translate(750,0)">
-      <!-- 幅 190, 高さ 40 → グループの右端(=x 940)まででピッタリ収まる -->
-      <rect width="190" height="40" rx="6"/>
-      <text class="label" x="70" y="26">Enter</text>
-    </g>
+<!-- 2段目（Tab + Q〜P + [ ] + Enter） -->
+<g transform="translate(40,120)">
+  <!-- Tab -->
+  <g id="key-Tab" class="key" transform="translate(0,0)">
+    <rect width="84" height="40" rx="6"/>
+    <text class="label" x="14" y="26">Tab</text>
   </g>
+
+  <!-- QWERTY（E を追加、以降を +60px シフト） -->
+  <g id="key-KeyQ" class="key" transform="translate(90,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="14" y="26">Q</text>
+  </g>
+  <g id="key-KeyW" class="key" transform="translate(150,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="14" y="26">W</text>
+  </g>
+  <!-- ★ 追加：E -->
+  <g id="key-KeyE" class="key" transform="translate(210,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="18" y="26">E</text>
+  </g>
+  <g id="key-KeyR" class="key" transform="translate(270,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="14" y="26">R</text>
+  </g>
+  <g id="key-KeyT" class="key" transform="translate(330,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="14" y="26">T</text>
+  </g>
+  <g id="key-KeyY" class="key" transform="translate(390,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="14" y="26">Y</text>
+  </g>
+  <g id="key-KeyU" class="key" transform="translate(450,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="14" y="26">U</text>
+  </g>
+  <g id="key-KeyI" class="key" transform="translate(510,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="18" y="26">I</text>
+  </g>
+  <g id="key-KeyO" class="key" transform="translate(570,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="14" y="26">O</text>
+  </g>
+  <g id="key-KeyP" class="key" transform="translate(630,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="16" y="26">P</text>
+  </g>
+
+  <!-- [ { 、 ] } （各 +60px シフト） -->
+  <g id="key-BracketLeft" class="key" transform="translate(690,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="12" y="26">[ {</text>
+  </g>
+  <g id="key-BracketRight" class="key" transform="translate(750,0)">
+    <rect width="56" height="40" rx="6"/>
+    <text class="label" x="12" y="26">] }</text>
+  </g>
+
+  <!-- Enter：E追加で列が伸びたため、開始位置を 810 に、幅を 130 に調整（終端 940 に収まる） -->
+  <g id="key-Enter" class="key" transform="translate(810,0)">
+    <rect width="130" height="40" rx="6"/>
+    <text class="label" x="46" y="26">Enter</text>
+  </g>
+</g>
 
   <!-- 3段目（Caps + A〜; + ' + IntlBackslash代替） -->
   <g transform="translate(40,180)">

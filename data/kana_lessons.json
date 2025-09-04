@@ -1,0 +1,135 @@
+
+{
+  "lessons": [
+    {
+      "id": "KANA_L1_a",
+      "title": "Lesson1 - あ行（a i u e o）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["a","i","u","e","o"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    },
+    {
+      "id": "KANA_L2_ka",
+      "title": "Lesson2 - か行（ka ki ku ke ko）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["ka","ki","ku","ke","ko"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    },
+    {
+      "id": "KANA_L3_sa",
+      "title": "Lesson3 - さ行（sa shi/si su se so）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["sa","shi","si","su","se","so"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    },
+    {
+      "id": "KANA_L4_ta",
+      "title": "Lesson4 - た行（ta chi/ti tsu/tu te to）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["ta","chi","ti","tsu","tu","te","to"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    },
+    {
+      "id": "KANA_L5_na",
+      "title": "Lesson5 - な行（na ni nu ne no）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["na","ni","nu","ne","no"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    },
+    {
+      "id": "KANA_L6_ha",
+      "title": "Lesson6 - は行（ha hi fu/hu he ho）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["ha","hi","fu","hu","he","ho"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    },
+    {
+      "id": "KANA_L7_ma",
+      "title": "Lesson7 - ま行（ma mi mu me mo）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["ma","mi","mu","me","mo"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    },
+    {
+      "id": "KANA_L8_ya",
+      "title": "Lesson8 - や行（ya yu yo）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["ya","yu","yo"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    },
+    {
+      "id": "KANA_L9_ra",
+      "title": "Lesson9 - ら行（ra ri ru re ro）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["ra","ri","ru","re","ro"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    },
+    {
+      "id": "KANA_L10_wa",
+      "title": "Lesson10 - わ行（wa wo n）",
+      "mode": "drill",
+      "durationSec": 45,
+      "generator": {
+        "type": "randomTokens",
+        "keys": ["wa","wo","n"],
+        "lengthMin": 4,
+        "lengthMax": 8,
+        "sep": ""
+      }
+    }
+  ]
+}

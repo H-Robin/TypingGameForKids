@@ -1,0 +1,31 @@
+<section id="practice" class="view">
+  <!-- HUD は TypingEngine の想定IDに合わせる -->
+  <header class="hud">
+    <div class="chip">残り <span id="remain">45</span>s</div>
+    <div class="chip">WPM <span id="wpm">0</span></div>
+    <div class="chip">正打 <span id="ok">0</span></div>
+    <div class="chip">ミス <span id="ng">0</span></div>
+    <div class="chip" id="fb">開始ボタンでスタート</div>
+  </header>
+
+  <div class="practice-main">
+    <!-- 出題（エンジンが #seq に書き込み） -->
+    <div id="seq" class="seq">
+        <div id="roma-line" class="roma-line"></div>
+        <div id="kana-line" class="kana-line"></div>
+    </div>
+
+    <!-- 操作ボタン（エンジンがこれらのIDを参照） -->
+    <div class="controls">
+      <button id="btn-start" data-action="start">▶ 開始</button>
+      <button id="btn-pause" data-action="pause" class="secondary">⏸ 一時停止</button>
+      <button id="btn-reset" data-action="reset" class="secondary">↺ リセット</button>
+      <label class="mute"><input type="checkbox" id="chk-mute" /> 効果音ミュート</label>
+    </div>
+
+    <!-- ガイドキーボード -->
+    <div id="keyboard-area" class="keyboard-area">
+      <p class="placeholder">（ここにSVGキーボードが入ります）</p>
+    </div>
+  </div>
+</section>
