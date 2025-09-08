@@ -48,6 +48,7 @@ export const TypingEngineKana = (() => {
     if (ch === ".") return "Period";
     if (ch === "-") return "Minus";
     if (ch === "=") return "Equal";
+    if (ch === "/") return "Slash";
     return null;
   }
 
@@ -64,6 +65,7 @@ export const TypingEngineKana = (() => {
       Period: ".",
       Minus: "-",
       Equal: "=",
+      Slash: "/",
     };
     return map[code] || null;
   }
@@ -151,10 +153,11 @@ export const TypingEngineKana = (() => {
     refreshHUD();
     clearInterval(state.timer);
     state.timer = setInterval(tick, 1000);
-
+/* スクロール移動は行わない（finger-panel を維持する）
     const kb = document.getElementById("keyboard-area");
     if (kb) kb.scrollIntoView({ behavior: "smooth", block: "end" });
-  }
+*/
+    }
 
   function pause() {
     if (!state.running || state.over) return;

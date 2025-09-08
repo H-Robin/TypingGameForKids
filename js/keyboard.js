@@ -62,6 +62,8 @@
     if (!area) return;
     area.querySelectorAll(".key.target").forEach((g) => g.classList.remove("target")); // <g>
     area.querySelectorAll("rect.target").forEach((r) => r.classList.remove("target")); // <rect>
+    // 指パネルも消灯
+    window.Fingers?.clear?.();
   }
 
   function highlightTarget(code) {
@@ -73,6 +75,8 @@
     } else {
       (el.querySelector?.("rect") || el).classList.add("target");
     }
+    // 指パネルを点灯
+    window.Fingers?.highlight?.(code);
   }
 
   window.KeyboardUI = { load, highlightTarget, clearTargets };

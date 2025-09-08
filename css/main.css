@@ -379,3 +379,31 @@ label.mute { display: inline-flex; align-items: center; gap: .4rem; font-weight:
 }
 /* 文字は太縁にならないように */
 #keyboard-area .key.target .label { stroke: none; }
+
+.finger-panel{
+  display:grid;
+  grid-template-columns: repeat(8, minmax(70px, 1fr));
+  gap:.5rem;
+  margin:1rem 0 0;
+}
+.finger{
+  border:1px solid #d1d5db;
+  border-radius:10px;
+  padding:.4rem .2rem;
+  text-align:center;
+  font-size:.9rem;
+  background:#fff;
+  user-select:none;
+}
+.finger.active{
+  background: rgba(255, 0, 0, .16); /* 薄い赤 */
+  border-color:#ef4444;
+  font-weight:700;
+}
+.seq{margin:1rem 0 1.25rem;text-align:center}
+.roma-line{font-size:2rem;font-weight:800;letter-spacing:.18rem;line-height:1.25;word-break:break-all}
+.kana-line{margin-top:4px;font-size:1rem;font-weight:400;color:#444;letter-spacing:.06rem;line-height:1.2;word-break:keep-all}
+
+.finger-panel{display:grid;grid-template-columns:repeat(8,minmax(70px,1fr));gap:.5rem;margin:1rem 0 0}
+.finger{border:1px solid #d1d5db;border-radius:10px;padding:.4rem .2rem;text-align:center;font-size:.9rem;background:#fff;user-select:none}
+.finger.active{background:rgba(255,0,0,.16);border-color:#ef4444;font-weight:700}

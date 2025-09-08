@@ -1,16 +1,15 @@
 // js/router.js
 (() => {
-  // ---- 画面パス → HTMLパーシャル ----
   const routes = {
-    "/home":         "views/home.html",
-    "/lessons":      "views/lessons.html",
-    "/practice":     "views/practice.html",
-    "/kana-lessons": "views/kana_lessons.html",
-    "/kana-practice":"views/kana_practice.html",
-    "/timeattack":   "views/timeattack.html",
-    "/settings":     "views/settings.html",
-    "/result":       "views/result.html",
-    "/mouse":        "views/game_mouse.html",
+    "/home":          "views/home.html",
+    "/lessons":       "views/lessons.html",
+    "/practice":      "views/practice.html",
+    "/kana-lessons":  "views/kana_lessons.html",
+    "/kana-practice": "views/kana_practice.html",
+    "/timeattack":    "views/timeattack.html",
+    "/settings":      "views/settings.html",
+    "/result":        "views/result.html",
+    "/mouse":         "views/game_mouse.html",
   };
 
   const DEFAULT_ROUTE = "/home";
@@ -20,7 +19,7 @@
   function normalizeHash(hash) {
     const h = (hash || "").replace(/^#/, "");
     if (!h || h === "/") return DEFAULT_ROUTE;
-    const pathOnly = h.split("?")[0]; // ← クエリを除去
+    const pathOnly = h.split("?")[0];
     return pathOnly.startsWith("/") ? pathOnly : "/" + pathOnly;
   }
 
@@ -45,7 +44,7 @@
       <section class="view not-found">
         <h2>ページが見つかりません</h2>
         <p><code>${path}</code> は存在しません。</p>
-        <p><a href="#/home">ホームに戻る</a></p>
+        <p><a href="#/home" data-link="#/home">ホームに戻る</a></p>
       </section>
     `;
   }
@@ -59,25 +58,45 @@
     return html;
   }
 
-  // どの画面へ遷移する前でも、既存のエンジンを“必ず”終了＆リセット
+  // 画面切替前に、両エンジンを確実に停止・初期化
   function teardownEngines() {
-    try {
-      if (window.TypingEngine) {
-        window.TypingEngine.reset?.();
-        window.TypingEngine.unmount?.();
-      }
-    } catch (_) {}
-    try {
-      if (window.TypingEngineKana) {
-        window.TypingEngineKana.reset?.();
-        window.TypingEngineKana.unmount?.();
-      }
-    } catch (_) {}
+    try { window.TypingEngine?.reset?.();     window.TypingEngine?.unmount?.(); } catch(_) {}
+    try { window.TypingEngineKana?.reset?.(); window.TypingEngineKana?.unmount?.(); } catch(_) {}
   }
+
+  // ---- タイマ方式で“準備完了”を待ってから finger-panel へスクロール ----
+  // 条件：finger-panel が存在 かつ keyboard-area に SVG が入っている（どちらか満たす/最大2秒）
+  function scrollToFingerPanelWhenReady() {
+    const deadline = performance.now() + 2000; // 最大2秒
+    const intervalMs = 50;
+
+    const tick = () => {
+      const panel = document.getElementById("finger-panel");
+      const svgLoaded = !!document.querySelector("#keyboard-area svg");
+      const ready = !!panel && svgLoaded;
+
+      if (ready) {
+        // 指パネルの下端をビューポート下端へ
+        panel.scrollIntoView({ behavior: "auto", block: "end" });
+        return; // 完了
+      }
+      if (performance.now() > deadline) {
+        // 打ち切り：保険でページ最下部へ
+        window.scrollTo({ top: document.documentElement.scrollHeight, behavior: "auto" });
+        return;
+      }
+      // まだなら再試行
+      setTimeout(tick, intervalMs);
+    };
+
+    // 最初のキック
+    setTimeout(tick, 0);
+  }
+
   function mountView(path, html) {
     appEl.innerHTML = html;
 
-    // 挿入された <script> を有効化
+    // 挿入 <script> を実行可能に置換
     const scriptNodes = Array.from(appEl.querySelectorAll("script"));
     for (const old of scriptNodes) {
       const s = document.createElement("script");
@@ -86,20 +105,20 @@
       old.replaceWith(s);
     }
 
-    window.scrollTo(0, 0);
     const ev = new CustomEvent("view:mounted", { detail: { path, container: appEl } });
     document.dispatchEvent(ev);
 
-    // ひらがな練習だけ専用JSを初期化（既存の /lessons は触らない）
+    // ビュー固有の初期化
     if (path === "/kana-lessons") {
-      requestAnimationFrame(() => {
-        import("./kana-lessons.js").then(mod => mod.KanaLessons.mount());
-      });
+      requestAnimationFrame(() => { import("./kana-lessons.js").then(m => m.KanaLessons.mount()); });
     }
     if (path === "/kana-practice") {
-      requestAnimationFrame(() => {
-        import("./kana-practice.js").then(mod => mod.KanaPractice.mount());
-      });
+      requestAnimationFrame(() => { import("./kana-practice.js").then(m => m.KanaPractice.mount()); });
+    }
+
+    // practice 系は、“準備が整ったら” 指パネルまでスクロール（タイマ待機で堅牢）
+    if (path === "/practice" || path === "/kana-practice") {
+      scrollToFingerPanelWhenReady();
     }
   }
 
@@ -111,7 +130,6 @@
       return;
     }
     try {
-      // ★ 画面切替のたびに、既存エンジンを確実に停止/解放
       teardownEngines();
       showLoading();
       const html = await fetchView(url);

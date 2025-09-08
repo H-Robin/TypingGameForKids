@@ -25,8 +25,31 @@ export const TypingEngine = (() => {
     if (u >= "A" && u <= "Z") return "Key"+u;
     if (ch === ";") return "Semicolon";
     if (ch === " ") return "Space";
+    if (ch === ",") return "Comma";
+    if (ch === ".") return "Period";
+    if (ch === "-") return "Minus";
+    if (ch === "=") return "Equal";
+    if (ch === "/") return "Slash";
     return null;
   }
+
+  function codeToChar(code) {
+  if (!code) return null;
+  const m = code.match(/^Key([A-Z])$/);
+  if (m) return m[1].toLowerCase();
+  const d = code.match(/^Digit([0-9])$/);
+  if (d) return d[1];
+  const map = {
+    Space: " ",
+    Semicolon: ";",
+    Comma: ",",
+    Period: ".",
+    Minus: "-",
+    Equal: "=",
+    Slash: "/",
+  };
+  return map[code] || null;
+}
 
   function setSequence(seqString){
     const raw = seqString.replace(/\s+/g,"");
@@ -65,10 +88,12 @@ export const TypingEngine = (() => {
     refreshHUD();
     clearInterval(state.timer); state.timer = setInterval(tick,1000);
 　  // ★ キーボードを下に合わせて表示
+/* スクロール移動は行わない（finger-panel を維持する）
 　  const kb = document.getElementById("keyboard-area");
 　  if (kb) {
 　    kb.scrollIntoView({ behavior: "smooth", block: "end" });
 　　 }
+*/
   }
 
   function pause(){ if(!state.running||state.over) return; state.paused=true; el().fb.textContent="一時停止中（Enterで再開）"; }
