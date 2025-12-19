@@ -44,6 +44,7 @@ export const KanaDrop = (() => {
     status: document.getElementById("kdrop-status"),
     name: document.getElementById("kana-drop-name"),
     meta: document.getElementById("kana-drop-meta"),
+    playCount: document.getElementById("kdrop-play-count"),
     mute: document.getElementById("kdrop-mute"),
   });
 
@@ -78,6 +79,7 @@ export const KanaDrop = (() => {
     if (E.score) E.score.textContent = String(state.score);
     if (E.ok) E.ok.textContent = String(state.ok);
     if (E.ng) E.ng.textContent = String(state.ng);
+    if (E.playCount) E.playCount.textContent = String(state.playCount);
   }
 
   function clearItems() {
@@ -193,6 +195,9 @@ export const KanaDrop = (() => {
     state.score = 0;
     state.ok = 0;
     state.ng = 0;
+    if (!Number.isFinite(state.playCount)) state.playCount = 0;
+    state.playCount += 1;
+    try { localStorage.setItem("kdropPlayCount", String(state.playCount)); } catch (_) {}
     state.lastFrame = 0;
     state.nextSpawn = performance.now() + 400;
     clearItems();
@@ -312,6 +317,11 @@ export const KanaDrop = (() => {
       Sound.setMute(E.mute.checked);
       E.mute.addEventListener("change", () => Sound.setMute(E.mute.checked));
     }
+    try {
+      const stored = localStorage.getItem("kdropPlayCount");
+      const n = Number.parseInt(stored, 10);
+      state.playCount = Number.isFinite(n) && n >= 0 ? n : 0;
+    } catch (_) { state.playCount = 0; }
 
     updateHUD();
     setStatus("Spaceで開始 / Escで一時停止");

@@ -5,7 +5,7 @@ export const TypingEngine = (() => {
   let state = {
     running:false, paused:false, over:false, composing:false,
     totalSec:45, remain:45, timer:null, ok:0, ng:0, typedRaw:"",
-    seqRaw:"", idx:0,
+    seqRaw:"", idx:0, playCount: 0,
     generator: null,        // ← 追加：動的シーケンス生成関数
   };
 
@@ -15,6 +15,7 @@ export const TypingEngine = (() => {
     acc:    document.getElementById("hud-acc"),
     ok:     document.getElementById("hud-ok"),
     ng:     document.getElementById("hud-ng"),
+    playCount: document.getElementById("hud-play-count"),
     typed:  document.getElementById("typed"),
     remain: document.getElementById("remain"),
     fb:     document.getElementById("feedback")
@@ -71,6 +72,7 @@ export const TypingEngine = (() => {
     E.wpm.textContent = Number.isFinite(wpm)? wpm : 0;
     E.acc.textContent = (state.ok+state.ng) ? Math.round(state.ok/(state.ok+state.ng)*100) : 100;
     E.ok.textContent = state.ok; E.ng.textContent = state.ng;
+    if (E.playCount) E.playCount.textContent = String(state.playCount);
   }
 
   function tick(){ if(state.paused||!state.running) return;
@@ -81,6 +83,9 @@ export const TypingEngine = (() => {
     state.running = true; state.paused = false; state.over = false;
     state.ok = 0; state.ng = 0; state.typedRaw = "";
     state.remain = state.totalSec;
+    if (!Number.isFinite(state.playCount)) state.playCount = 0;
+    state.playCount += 1;
+    try { localStorage.setItem("typingPlayCount", String(state.playCount)); } catch (_) {}
     // ここでジェネレータから初期シーケンスを生成
     const firstSeq = state.generator ? state.generator() : "Spaceボタンを押してスタート";
     setSequence(firstSeq);
@@ -152,7 +157,14 @@ export const TypingEngine = (() => {
 
   // 公開API
   return {
-    configure({ durationSec } = {}) { if (durationSec>0) { state.totalSec = durationSec; state.remain = durationSec; } },
+    configure({ durationSec } = {}) {
+      if (durationSec>0) { state.totalSec = durationSec; state.remain = durationSec; }
+      try {
+        const stored = localStorage.getItem("typingPlayCount");
+        const n = Number.parseInt(stored, 10);
+        state.playCount = Number.isFinite(n) && n >= 0 ? n : 0;
+      } catch (_) { state.playCount = 0; }
+    },
     setGenerator(fn){ state.generator = fn; },
     mount(){
       // 初期プレビュー

@@ -12,6 +12,7 @@ export const TypingEngineKana = (() => {
     timer: null,
     ok: 0,
     ng: 0,
+    playCount: 0,
 
     // 入力進捗
     typedRaw: "",
@@ -36,6 +37,7 @@ export const TypingEngineKana = (() => {
     fb:   document.getElementById("fb"),
     romaLine: document.getElementById("roma-line"),
     kanaLine: document.getElementById("kana-line"),
+    playCount: document.getElementById("play-count"),
   });
 
   // 文字→キーコード（ハイライト用）
@@ -125,6 +127,7 @@ export const TypingEngineKana = (() => {
     if (E.wpm) E.wpm.textContent = Number.isFinite(wpmVal) ? String(wpmVal) : "0";
     if (E.ok)  E.ok.textContent  = String(state.ok);
     if (E.ng)  E.ng.textContent  = String(state.ng);
+    if (E.playCount) E.playCount.textContent = String(state.playCount);
   }
 
   function tick() {
@@ -144,6 +147,9 @@ export const TypingEngineKana = (() => {
     state.ng = 0;
     state.typedRaw = "";
     state.remain = state.totalSec;
+    if (!Number.isFinite(state.playCount)) state.playCount = 0;
+    state.playCount += 1;
+    try { localStorage.setItem("typingKanaPlayCount", String(state.playCount)); } catch (_) {}
 
     const firstRoma = state.generator ? state.generator() : "aiueo";
     setSequence(firstRoma);
@@ -274,6 +280,11 @@ export const TypingEngineKana = (() => {
       state.totalSec = durationSec;
       state.remain = durationSec;
     }
+    try {
+      const stored = localStorage.getItem("typingKanaPlayCount");
+      const n = Number.parseInt(stored, 10);
+      state.playCount = Number.isFinite(n) && n >= 0 ? n : 0;
+    } catch (_) { state.playCount = 0; }
   }
 
   function setGenerator(fn) { state.generator = fn; }

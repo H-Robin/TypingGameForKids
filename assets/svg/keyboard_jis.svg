@@ -3,7 +3,7 @@
   <style>
     .key rect{ fill:#f3f4f6; stroke:#d1d5db; stroke-width:2 }
     .label{ fill:#374151; font:600 12px/1 "Noto Sans JP","Helvetica Neue",Arial,sans-serif; user-select:none }
-    .alpha-label{ font:700 13px/1 "Noto Sans JP","Helvetica Neue",Arial,sans-serif; fill:#fff; }
+    .alpha-label{ font:700 13px/1 "Noto Sans JP","Helvetica Neue",Arial,sans-serif; fill:#111827; }
     .alpha-sub{ font:600 10px/1 "Noto Sans JP","Helvetica Neue",Arial,sans-serif; fill:#f97316; }
   </style>
 
