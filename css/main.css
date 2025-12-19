@@ -330,6 +330,25 @@ label.mute { display: inline-flex; align-items: center; gap: .4rem; font-weight:
 .drop-item.kana { text-align: center; }
 .drop-item .kana-big { font-size: 1.8rem; display: block; margin-bottom: .1rem; }
 .drop-item .roma-mini { font-size: 1.08rem; letter-spacing: .08em; color: #cbd5e1; } /* 20%アップ */
+.drop-item.alpha {
+  color: #f97316;
+  text-align: center;
+}
+.drop-item.alpha .upper {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.05;
+}
+.drop-item.alpha .lower {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.05;
+  margin-top: 0.08rem;
+}
+.drop-item.alpha .hit { color: #34d399; text-decoration: none; } /* 正解＝緑を維持 */
+.drop-item.alpha .next { color: #fb923c; text-decoration: underline; }
 
 /* === Kana Practice main === */
 /* === ひらがな練習：2段表示 === */

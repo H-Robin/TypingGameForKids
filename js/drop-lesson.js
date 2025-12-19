@@ -98,11 +98,20 @@ export const DropLesson = (() => {
 
   function renderItem(item) {
     if (!item?.el) return;
-    const typed = item.word.slice(0, item.typed);
-    const next = item.word[item.typed] || "";
-    const rest = item.word.slice(item.typed + 1);
-    const nextSpan = next ? `<span class="next">${next}</span>` : "";
-    item.el.innerHTML = `<span class="hit">${typed}</span>${nextSpan}<span>${rest}</span>`;
+    const upper = item.word.toUpperCase();
+    const lower = item.word.toLowerCase();
+    const t = item.typed;
+    const upperTyped = upper.slice(0, t);
+    const upperNext = upper[t] || "";
+    const upperRest = upper.slice(t + 1);
+    const lowerTyped = lower.slice(0, t);
+    const lowerNext = lower[t] || "";
+    const lowerRest = lower.slice(t + 1);
+
+    item.el.innerHTML = `
+      <span class="upper"><span class="hit">${upperTyped}</span><span class="next">${upperNext}</span><span>${upperRest}</span></span>
+      <span class="lower"><span class="hit">${lowerTyped}</span><span class="next">${lowerNext}</span><span>${lowerRest}</span></span>
+    `;
     item.el.style.transform = `translate3d(${item.x}px, ${item.y}px, 0)`;
   }
 
@@ -123,7 +132,7 @@ export const DropLesson = (() => {
       y: -32,
       el: document.createElement("div"),
     };
-    item.el.className = "drop-item";
+    item.el.className = "drop-item alpha";
     area.appendChild(item.el);
     state.items.push(item);
     renderItem(item);

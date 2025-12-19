@@ -3,6 +3,8 @@
   <style>
     .key rect{ fill:#f3f4f6; stroke:#d1d5db; stroke-width:2 }
     .label{ fill:#374151; font:600 12px/1 system-ui,Arial; user-select:none }
+    .alpha-label{ font:700 13px/1 system-ui,Arial; fill:#fff; }
+    .alpha-sub{ font:600 10px/1 system-ui,Arial; fill:#f97316; }
   </style>
 
   <!-- 行ガイド（任意） -->
@@ -49,44 +51,54 @@
   <!-- QWERTY（E を追加、以降を +60px シフト） -->
   <g id="key-KeyQ" class="key" transform="translate(90,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="14" y="26">Q</text>
+    <text class="alpha-label" x="18" y="20">Q</text>
+    <text class="alpha-sub"   x="18" y="33">q</text>
   </g>
   <g id="key-KeyW" class="key" transform="translate(150,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="14" y="26">W</text>
+    <text class="alpha-label" x="18" y="20">W</text>
+    <text class="alpha-sub"   x="18" y="33">w</text>
   </g>
   <!-- ★ 追加：E -->
   <g id="key-KeyE" class="key" transform="translate(210,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="18" y="26">E</text>
+    <text class="alpha-label" x="18" y="20">E</text>
+    <text class="alpha-sub"   x="18" y="33">e</text>
   </g>
   <g id="key-KeyR" class="key" transform="translate(270,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="14" y="26">R</text>
+    <text class="alpha-label" x="18" y="20">R</text>
+    <text class="alpha-sub"   x="18" y="33">r</text>
   </g>
   <g id="key-KeyT" class="key" transform="translate(330,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="14" y="26">T</text>
+    <text class="alpha-label" x="18" y="20">T</text>
+    <text class="alpha-sub"   x="18" y="33">t</text>
   </g>
   <g id="key-KeyY" class="key" transform="translate(390,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="14" y="26">Y</text>
+    <text class="alpha-label" x="18" y="20">Y</text>
+    <text class="alpha-sub"   x="18" y="33">y</text>
   </g>
   <g id="key-KeyU" class="key" transform="translate(450,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="14" y="26">U</text>
+    <text class="alpha-label" x="18" y="20">U</text>
+    <text class="alpha-sub"   x="18" y="33">u</text>
   </g>
   <g id="key-KeyI" class="key" transform="translate(510,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="18" y="26">I</text>
+    <text class="alpha-label" x="18" y="20">I</text>
+    <text class="alpha-sub"   x="18" y="33">i</text>
   </g>
   <g id="key-KeyO" class="key" transform="translate(570,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="14" y="26">O</text>
+    <text class="alpha-label" x="18" y="20">O</text>
+    <text class="alpha-sub"   x="18" y="33">o</text>
   </g>
   <g id="key-KeyP" class="key" transform="translate(630,0)">
     <rect width="56" height="40" rx="6"/>
-    <text class="label" x="16" y="26">P</text>
+    <text class="alpha-label" x="18" y="20">P</text>
+    <text class="alpha-sub"   x="18" y="33">p</text>
   </g>
 
   <!-- [ { 、 ] } （各 +60px シフト） -->
@@ -111,15 +123,15 @@
     <g id="key-CapsLock" class="key" transform="translate(0,0)">
       <rect width="100" height="40" rx="6"/><text class="label" x="14" y="26">Caps</text>
     </g>
-    <g id="key-KeyA" class="key" transform="translate(110,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">A</text></g>
-    <g id="key-KeyS" class="key" transform="translate(170,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">S</text></g>
-    <g id="key-KeyD" class="key" transform="translate(230,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">D</text></g>
-    <g id="key-KeyF" class="key" transform="translate(290,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">F</text></g>
-    <g id="key-KeyG" class="key" transform="translate(350,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">G</text></g>
-    <g id="key-KeyH" class="key" transform="translate(410,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">H</text></g>
-    <g id="key-KeyJ" class="key" transform="translate(470,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">J</text></g>
-    <g id="key-KeyK" class="key" transform="translate(530,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">K</text></g>
-    <g id="key-KeyL" class="key" transform="translate(590,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">L</text></g>
+    <g id="key-KeyA" class="key" transform="translate(110,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">A</text><text class="alpha-sub" x="18" y="33">a</text></g>
+    <g id="key-KeyS" class="key" transform="translate(170,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">S</text><text class="alpha-sub" x="18" y="33">s</text></g>
+    <g id="key-KeyD" class="key" transform="translate(230,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">D</text><text class="alpha-sub" x="18" y="33">d</text></g>
+    <g id="key-KeyF" class="key" transform="translate(290,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">F</text><text class="alpha-sub" x="18" y="33">f</text></g>
+    <g id="key-KeyG" class="key" transform="translate(350,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">G</text><text class="alpha-sub" x="18" y="33">g</text></g>
+    <g id="key-KeyH" class="key" transform="translate(410,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">H</text><text class="alpha-sub" x="18" y="33">h</text></g>
+    <g id="key-KeyJ" class="key" transform="translate(470,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">J</text><text class="alpha-sub" x="18" y="33">j</text></g>
+    <g id="key-KeyK" class="key" transform="translate(530,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">K</text><text class="alpha-sub" x="18" y="33">k</text></g>
+    <g id="key-KeyL" class="key" transform="translate(590,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">L</text><text class="alpha-sub" x="18" y="33">l</text></g>
     <g id="key-Semicolon" class="key" transform="translate(650,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">; +</text></g>
     <g id="key-Quote" class="key" transform="translate(710,0)"><rect width="56" height="40" rx="6"/><text class="label" x="14" y="26">' "</text></g>
     <!-- JISではUSのBackslash位置が異なるため保険で配置（ブラウザによっては使われない） -->
@@ -131,13 +143,13 @@
     <g id="key-ShiftLeft" class="key" transform="translate(0,0)">
       <rect width="130" height="40" rx="6"/><text class="label" x="16" y="26">Shift</text>
     </g>
-    <g id="key-KeyZ" class="key" transform="translate(150,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">Z</text></g>
-    <g id="key-KeyX" class="key" transform="translate(210,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">X</text></g>
-    <g id="key-KeyC" class="key" transform="translate(270,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">C</text></g>
-    <g id="key-KeyV" class="key" transform="translate(330,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">V</text></g>
-    <g id="key-KeyB" class="key" transform="translate(390,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">B</text></g>
-    <g id="key-KeyN" class="key" transform="translate(450,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">N</text></g>
-    <g id="key-KeyM" class="key" transform="translate(510,0)"><rect width="56" height="40" rx="6"/><text class="label" x="18" y="26">M</text></g>
+    <g id="key-KeyZ" class="key" transform="translate(150,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">Z</text><text class="alpha-sub" x="18" y="33">z</text></g>
+    <g id="key-KeyX" class="key" transform="translate(210,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">X</text><text class="alpha-sub" x="18" y="33">x</text></g>
+    <g id="key-KeyC" class="key" transform="translate(270,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">C</text><text class="alpha-sub" x="18" y="33">c</text></g>
+    <g id="key-KeyV" class="key" transform="translate(330,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">V</text><text class="alpha-sub" x="18" y="33">v</text></g>
+    <g id="key-KeyB" class="key" transform="translate(390,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">B</text><text class="alpha-sub" x="18" y="33">b</text></g>
+    <g id="key-KeyN" class="key" transform="translate(450,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">N</text><text class="alpha-sub" x="18" y="33">n</text></g>
+    <g id="key-KeyM" class="key" transform="translate(510,0)"><rect width="56" height="40" rx="6"/><text class="alpha-label" x="18" y="20">M</text><text class="alpha-sub" x="18" y="33">m</text></g>
     <g id="key-Comma" class="key" transform="translate(570,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">, &lt;</text></g>
     <g id="key-Period" class="key" transform="translate(630,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">. &gt;</text></g>
     <g id="key-Slash" class="key" transform="translate(690,0)"><rect width="56" height="40" rx="6"/><text class="label" x="16" y="26">/ ?</text></g>
