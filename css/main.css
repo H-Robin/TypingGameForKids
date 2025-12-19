@@ -1,3 +1,8 @@
+/* 全体フォント（ゴシック系に統一） */
+body {
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+}
+
 /* ヘッダー背景に画像を設定 & 中央寄せ */
 #header {
   display: flex;
