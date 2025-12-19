@@ -327,6 +327,9 @@ label.mute { display: inline-flex; align-items: center; gap: .4rem; font-weight:
 .drop-item .hit { color: #34d399; }
 .drop-item .next { color: #fbbf24; text-decoration: underline; }
 .drop-help { text-align: center; color: #475569; margin-top: .8rem; }
+.drop-item.kana { text-align: center; }
+.drop-item .kana-big { font-size: 1.8rem; display: block; margin-bottom: .1rem; }
+.drop-item .roma-mini { font-size: 1.08rem; letter-spacing: .08em; color: #cbd5e1; } /* 20%アップ */
 
 /* === Kana Practice main === */
 /* === ひらがな練習：2段表示 === */

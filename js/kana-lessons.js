@@ -15,7 +15,10 @@ export const KanaLessons = (() => {
       <div class="lesson-card">
         <h3>${l.title}</h3>
         <div class="drills">
-          <button data-lesson-id="${l.id}">No.1</button>
+          <div class="drill-cell">
+            <button class="drill" data-lesson-id="${l.id}">No.1</button>
+            <button class="drill drop-mode" data-drop-lesson-id="${l.id}">落ちゲーで遊ぶ</button>
+          </div>
         </div>
       </div>
     `).join("");
@@ -23,6 +26,12 @@ export const KanaLessons = (() => {
       btn.addEventListener("click", () => {
         const id = btn.getAttribute("data-lesson-id");
         if (id) location.hash = "#/kana-practice?id=" + encodeURIComponent(id);
+      });
+    });
+    el.querySelectorAll("[data-drop-lesson-id]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute("data-drop-lesson-id");
+        if (id) location.hash = "#/kana-drop?id=" + encodeURIComponent(id);
       });
     });
   }

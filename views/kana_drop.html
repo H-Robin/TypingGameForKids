@@ -1,0 +1,32 @@
+<section id="kana-drop" class="view drop-view">
+  <div class="drop-head">
+    <div>
+      <p class="eyebrow">ひらがな落ちゲー</p>
+      <h2 id="kana-drop-name">レッスン名がここに表示されます</h2>
+      <p class="muted" id="kana-drop-meta"></p>
+    </div>
+    <div class="drop-controls">
+      <button id="btn-kdrop-start">▶ スタート（Space）</button>
+      <button id="btn-kdrop-pause" class="secondary">⏸ 一時停止（Esc）</button>
+      <button id="btn-kdrop-reset" class="secondary">↺ リセット</button>
+      <label class="mute"><input type="checkbox" id="kdrop-mute" /> 効果音ミュート</label>
+    </div>
+  </div>
+
+  <div class="hud drop-hud">
+    <div class="chip">残り <span id="kdrop-remain">45</span>s</div>
+    <div class="chip">スコア <span id="kdrop-score">0</span></div>
+    <div class="chip">正打 <span id="kdrop-ok">0</span></div>
+    <div class="chip">ミス <span id="kdrop-ng">0</span></div>
+  </div>
+
+  <div class="drop-status" id="kdrop-status">Spaceで開始 / Escで一時停止</div>
+
+  <div class="drop-area" id="kdrop-area" aria-label="ひらがな落ちゲーのフィールド">
+    <div class="drop-grid" aria-hidden="true"></div>
+  </div>
+
+  <p class="drop-help">
+    ひらがなが一文字ずつ落ちてくるよ。下の小さなローマ字をタイプして撃ち落とそう。
+  </p>
+</section>

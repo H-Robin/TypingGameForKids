@@ -1,8 +1,21 @@
-// js/drop-lesson.js
-import { Lessons } from "./lessons.js";
+// js/kana-drop.js
 import { Sound } from "./sound.js";
 
-export const DropLesson = (() => {
+export const KanaDrop = (() => {
+  const JSON_URL = "./data/kana_lessons.json";
+  const ROMA2KANA = {
+    a:"あ", i:"い", u:"う", e:"え", o:"お",
+    ka:"か", ki:"き", ku:"く", ke:"け", ko:"こ",
+    sa:"さ", shi:"し", si:"し", su:"す", se:"せ", so:"そ",
+    ta:"た", chi:"ち", ti:"ち", tsu:"つ", tu:"つ", te:"て", to:"と",
+    na:"な", ni:"に", nu:"ぬ", ne:"ね", no:"の",
+    ha:"は", hi:"ひ", fu:"ふ", hu:"ふ", he:"へ", ho:"ほ",
+    ma:"ま", mi:"み", mu:"む", me:"め", mo:"も",
+    ya:"や", yu:"ゆ", yo:"よ",
+    ra:"ら", ri:"り", ru:"る", re:"れ", ro:"ろ",
+    wa:"わ", wo:"を", n:"ん"
+  };
+
   const state = {
     running: false,
     paused: false,
@@ -13,9 +26,9 @@ export const DropLesson = (() => {
     loopId: null,
     lastFrame: 0,
     nextSpawn: 0,
-    fallSpeed: 120,   // px/sec
+    fallSpeed: 120,
     spawnMs: 2100,
-    generator: null,
+    generator: null, // () => { kana, roma }
     items: [],
     score: 0,
     ok: 0,
@@ -23,18 +36,17 @@ export const DropLesson = (() => {
   };
 
   const el = () => ({
-    area: document.getElementById("drop-area"),
-    remain: document.getElementById("drop-remain"),
-    score: document.getElementById("drop-score"),
-    ok: document.getElementById("drop-ok"),
-    ng: document.getElementById("drop-ng"),
-    status: document.getElementById("drop-status"),
-    lesson: document.getElementById("drop-lesson-name"),
-    meta: document.getElementById("drop-lesson-meta"),
-    mute: document.getElementById("drop-mute"),
+    area: document.getElementById("kdrop-area"),
+    remain: document.getElementById("kdrop-remain"),
+    score: document.getElementById("kdrop-score"),
+    ok: document.getElementById("kdrop-ok"),
+    ng: document.getElementById("kdrop-ng"),
+    status: document.getElementById("kdrop-status"),
+    name: document.getElementById("kana-drop-name"),
+    meta: document.getElementById("kana-drop-meta"),
+    mute: document.getElementById("kdrop-mute"),
   });
 
-  // keycode → 文字
   function codeToChar(code, key) {
     if (!code) return null;
     const m = code.match(/^Key([A-Z])$/);
@@ -51,7 +63,6 @@ export const DropLesson = (() => {
       Slash: "/",
     };
     if (map[code]) return map[code];
-    // fallback: 1文字だけの e.key
     if (key && key.length === 1) return key.toLowerCase();
     return null;
   }
@@ -70,60 +81,43 @@ export const DropLesson = (() => {
   }
 
   function clearItems() {
-    state.items.forEach(item => item.el?.remove());
+    state.items.forEach(i => i.el?.remove());
     state.items = [];
   }
 
-  function nextCharFromGenerator() {
-    const raw = state.generator ? state.generator() : "";
-    const s = String(raw || "").replace(/\s+/g, "");
-    return s[0] || "";
-  }
-
-  function spawnLength() {
-    const elapsed = state.totalSec - state.remain;
-    if (elapsed < 10) return 1;
-    if (elapsed < 20) return 2;
-    return 3; // 20秒以降＆最後の10秒も3文字
-  }
-
-  function makeWord(len) {
-    const chars = [];
-    for (let i = 0; i < len; i++) {
-      const c = nextCharFromGenerator();
-      chars.push(c || "a");
-    }
-    return chars.join("");
-  }
-
   function renderItem(item) {
-    if (!item?.el) return;
-    const typed = item.word.slice(0, item.typed);
-    const next = item.word[item.typed] || "";
-    const rest = item.word.slice(item.typed + 1);
-    const nextSpan = next ? `<span class="next">${next}</span>` : "";
-    item.el.innerHTML = `<span class="hit">${typed}</span>${nextSpan}<span>${rest}</span>`;
+    if (!item.el) return;
+    const displayRoma = item.roma.toUpperCase();
+    const typed = displayRoma.slice(0, item.typed);
+    const next = displayRoma[item.typed] || "";
+    const rest = displayRoma.slice(item.typed + 1);
+    item.el.innerHTML = `
+      <span class="kana-big">${item.kana}</span>
+      <span class="roma-mini"><span class="hit">${typed}</span><span class="next">${next}</span><span>${rest}</span></span>
+    `;
     item.el.style.transform = `translate3d(${item.x}px, ${item.y}px, 0)`;
   }
 
   function spawnItem() {
     if (!state.running || state.paused) return;
-    const word = makeWord(spawnLength());
+    const w = state.generator ? state.generator() : null;
+    if (!w || !w.kana || !w.roma) return;
     const area = el().area;
-    if (!word || !area) return;
-    const maxX = Math.max(0, (area.clientWidth || 0) - 120);
+    if (!area) return;
+    const maxX = Math.max(0, (area.clientWidth || 0) - 140);
     const x = Math.random() * maxX + 12;
     const item = {
       id: (typeof crypto !== "undefined" && crypto.randomUUID)
         ? crypto.randomUUID()
         : String(Date.now() + Math.random()),
-      word,
+      kana: w.kana,
+      roma: w.roma,
       typed: 0,
       x,
       y: -32,
       el: document.createElement("div"),
     };
-    item.el.className = "drop-item";
+    item.el.className = "drop-item kana";
     area.appendChild(item.el);
     state.items.push(item);
     renderItem(item);
@@ -143,15 +137,14 @@ export const DropLesson = (() => {
 
   function pickTarget() {
     if (!state.items.length) return null;
-    // 一番下に近いものを優先
     return state.items.reduce((a, b) => (b.y > a.y ? b : a));
   }
 
   function updateDifficulty() {
     const progress = Math.max(0, Math.min(1, 1 - state.remain / state.totalSec));
-    const spawnDelayFactor = 1.2;                 // 20% 遅らせる
-    state.fallSpeed = 110 + progress * 50;        // 110 → 160
-    state.spawnMs = (2100 - progress * 700) * spawnDelayFactor; // 2100→1400 を20%遅延
+    const spawnDelayFactor = 1.2; // 20%遅らせる
+    state.fallSpeed = 110 + progress * 50;
+    state.spawnMs = (2100 - progress * 700) * spawnDelayFactor;
   }
 
   function loop(ts) {
@@ -185,17 +178,12 @@ export const DropLesson = (() => {
     state.remain--;
     updateDifficulty();
     updateHUD();
-    if (state.remain <= 0) {
-      finish();
-    }
+    if (state.remain <= 0) finish();
   }
 
   function start() {
     if (state.running && !state.paused) return;
-    if (!state.generator) {
-      setStatus("レッスンを選び直してください");
-      return;
-    }
+    if (!state.generator) { setStatus("レッスンを選び直してください"); return; }
     Sound.init?.();
 
     state.running = true;
@@ -261,7 +249,7 @@ export const DropLesson = (() => {
 
     const target = pickTarget();
     if (!target) return;
-    const need = target.word[target.typed];
+    const need = target.roma[target.typed];
     if (!need) return;
 
     if (ch === need) {
@@ -270,8 +258,8 @@ export const DropLesson = (() => {
       target.typed++;
       Sound.click();
 
-      if (target.typed >= target.word.length) {
-        state.score += 2; // クリアボーナス
+      if (target.typed >= target.roma.length) {
+        state.score += 2;
         Sound.success();
         removeItem(target);
       } else {
@@ -284,29 +272,41 @@ export const DropLesson = (() => {
     updateHUD();
   }
 
+  function makeGenerator(lesson) {
+    const keys = (lesson?.generator?.keys || []).map(s => String(s).toLowerCase());
+    return () => {
+      if (!keys.length) return { kana: "あ", roma: "a" };
+      const roma = keys[Math.floor(Math.random() * keys.length)];
+      const kana = ROMA2KANA[roma] || roma;
+      return { kana, roma };
+    };
+  }
+
   async function mount() {
-    const jsonUrl = sessionStorage.getItem("selectedLessonJson") || "./data/lessons1.json";
-    const drillId = sessionStorage.getItem("selectedLessonId") || "";
+    const idMatch = location.hash.match(/[?#&]id=([^&]+)/);
+    const lessonId = idMatch ? decodeURIComponent(idMatch[1]) : null;
 
     try {
-      await Lessons.load(jsonUrl);
-      const lesson = Lessons.get(drillId);
+      const res = await fetch(JSON_URL, { cache: "no-cache" });
+      if (!res.ok) throw new Error("kana_lessons.json load failed");
+      const db = await res.json();
+      const lesson = (db.lessons || []).find(l => l.id === lessonId);
       state.totalSec = lesson?.durationSec || 45;
       state.remain = state.totalSec;
-      state.generator = Lessons.makeGenerator(lesson);
+      state.generator = makeGenerator(lesson);
 
       const E = el();
-      if (E.lesson) E.lesson.textContent = lesson ? lesson.title : "レッスン未選択";
-      if (E.meta) E.meta.textContent = lesson ? `時間 ${state.totalSec}s / モード ${lesson.mode || "drill"}` : "Lesson を選んでね";
+      if (E.name) E.name.textContent = lesson ? lesson.title : "レッスン未選択";
+      if (E.meta) E.meta.textContent = lesson ? `時間 ${state.totalSec}s / ひらがな1文字×ローマ字入力` : "レッスンを選んでね";
     } catch (err) {
       console.error(err);
       setStatus("レッスン読み込みに失敗しました");
     }
 
     const E = el();
-    document.getElementById("btn-drop-start")?.addEventListener("click", start);
-    document.getElementById("btn-drop-pause")?.addEventListener("click", pause);
-    document.getElementById("btn-drop-reset")?.addEventListener("click", reset);
+    document.getElementById("btn-kdrop-start")?.addEventListener("click", start);
+    document.getElementById("btn-kdrop-pause")?.addEventListener("click", pause);
+    document.getElementById("btn-kdrop-reset")?.addEventListener("click", reset);
 
     if (E.mute) {
       Sound.setMute(E.mute.checked);

@@ -83,4 +83,11 @@ document.addEventListener("view:mounted", async (e) => {
     await DropLesson.mount();
     document.addEventListener("hashchange", () => DropLesson.unmount?.(), { once: true });
   }
+
+  // --- ひらがな落ちゲー ---
+  if (path === "/kana-drop") {
+    const { KanaDrop } = await import("./kana-drop.js");
+    await KanaDrop.mount();
+    document.addEventListener("hashchange", () => KanaDrop.unmount?.(), { once: true });
+  }
 });

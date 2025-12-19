@@ -7,6 +7,7 @@
     "/drop-lesson":   "views/drop_lesson.html",
     "/kana-lessons":  "views/kana_lessons.html",
     "/kana-practice": "views/kana_practice.html",
+    "/kana-drop":     "views/kana_drop.html",
     "/timeattack":    "views/timeattack.html",
     "/settings":      "views/settings.html",
     "/result":        "views/result.html",
