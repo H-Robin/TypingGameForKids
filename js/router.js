@@ -4,6 +4,7 @@
     "/home":          "views/home.html",
     "/lessons":       "views/lessons.html",
     "/practice":      "views/practice.html",
+    "/drop-lesson":   "views/drop_lesson.html",
     "/kana-lessons":  "views/kana_lessons.html",
     "/kana-practice": "views/kana_practice.html",
     "/timeattack":    "views/timeattack.html",

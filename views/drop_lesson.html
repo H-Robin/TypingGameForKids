@@ -1,0 +1,32 @@
+<section id="drop-lesson" class="view drop-view">
+  <div class="drop-head">
+    <div>
+      <p class="eyebrow">レッスン落ちゲー</p>
+      <h2 id="drop-lesson-name">選択されたレッスンがここに表示されます</h2>
+      <p class="muted" id="drop-lesson-meta"></p>
+    </div>
+    <div class="drop-controls">
+      <button id="btn-drop-start">▶ スタート（Space）</button>
+      <button id="btn-drop-pause" class="secondary">⏸ 一時停止（Esc）</button>
+      <button id="btn-drop-reset" class="secondary">↺ リセット</button>
+      <label class="mute"><input type="checkbox" id="drop-mute" /> 効果音ミュート</label>
+    </div>
+  </div>
+
+  <div class="hud drop-hud">
+    <div class="chip">残り <span id="drop-remain">45</span>s</div>
+    <div class="chip">スコア <span id="drop-score">0</span></div>
+    <div class="chip">正打 <span id="drop-ok">0</span></div>
+    <div class="chip">ミス <span id="drop-ng">0</span></div>
+  </div>
+
+  <div class="drop-status" id="drop-status">Spaceで開始 / Escで一時停止</div>
+
+  <div class="drop-area" id="drop-area" aria-label="落ちゲーのフィールド">
+    <div class="drop-grid" aria-hidden="true"></div>
+  </div>
+
+  <p class="drop-help">
+    上から落ちてくる文字列をタイプして撃ち落とそう。黄色が次の文字、緑が打ち終わった文字だよ。
+  </p>
+</section>

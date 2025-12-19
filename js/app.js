@@ -18,6 +18,9 @@ document.addEventListener("view:mounted", async (e) => {
       const db = await Lessons.load(jsonUrl);
       drillsBox.innerHTML = ""; // 初期化
       (db.lessons || []).forEach((lesson, idx) => {
+        const cell = document.createElement("div");
+        cell.className = "drill-cell";
+
         const btn = document.createElement("button");
         btn.className = "drill";
         btn.textContent = `No.${idx + 1} ${lesson.title}`;
@@ -28,7 +31,22 @@ document.addEventListener("view:mounted", async (e) => {
           sessionStorage.setItem("selectedLessonScope", card.getAttribute("data-lesson") || "");
           location.hash = "#/practice";
         });
-        drillsBox.appendChild(btn);
+
+        const dropBtn = document.createElement("button");
+        dropBtn.className = "drill drop-mode";
+        dropBtn.textContent = "落ちゲーで遊ぶ";
+        dropBtn.title = "落ちてくる文字を撃ち落として練習するモード";
+        dropBtn.dataset.drill = lesson.id;
+        dropBtn.addEventListener("click", () => {
+          sessionStorage.setItem("selectedLessonJson", jsonUrl);
+          sessionStorage.setItem("selectedLessonId", lesson.id);
+          sessionStorage.setItem("selectedLessonScope", card.getAttribute("data-lesson") || "");
+          location.hash = "#/drop-lesson";
+        });
+
+        cell.appendChild(btn);
+        cell.appendChild(dropBtn);
+        drillsBox.appendChild(cell);
       });
     }
     return;
@@ -57,5 +75,12 @@ document.addEventListener("view:mounted", async (e) => {
       TypingEngine.unmount?.();
       window.KeyboardUI?.clearTargets?.();
     }, { once: true });
+  }
+
+  // --- 落ちゲー練習 ---
+  if (path === "/drop-lesson") {
+    const { DropLesson } = await import("./drop-lesson.js");
+    await DropLesson.mount();
+    document.addEventListener("hashchange", () => DropLesson.unmount?.(), { once: true });
   }
 });
