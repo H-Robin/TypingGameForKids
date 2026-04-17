@@ -4,7 +4,7 @@
       "id": "L4_p1_56",
       "title": "5・6",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["5","6"],
@@ -17,7 +17,7 @@
       "id": "L4_p2_47",
       "title": "4・7",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["4","7"],
@@ -30,7 +30,7 @@
       "id": "L4_p3_38",
       "title": "3・8",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["3","8"],
@@ -43,7 +43,7 @@
       "id": "L4_p4_29",
       "title": "2・9",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["2","9"],
@@ -56,7 +56,7 @@
       "id": "L4_p5_10",
       "title": "1・0",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["1","0"],
@@ -69,7 +69,7 @@
       "id": "L4_p6_full",
       "title": "数字キー全部",
       "mode": "drill",
-      "durationSec": 45,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["1","2","3","4","5","6","7","8","9","0"],

@@ -85,8 +85,8 @@ export const DropLesson = (() => {
   function spawnLength() {
     const elapsed = state.totalSec - state.remain;
     if (elapsed < 10) return 1;
-    if (elapsed < 20) return 2;
-    return 3; // 20秒以降＆最後の10秒も3文字
+    if (elapsed < 15) return 2;
+    return 3; // 15秒以降は3文字
   }
 
   function makeWord(len) {

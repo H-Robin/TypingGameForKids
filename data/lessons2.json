@@ -4,7 +4,7 @@
       "id": "L2_p1_Z/",
       "title": "Z・/",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["z", "/"],
@@ -17,7 +17,7 @@
       "id": "L2_p2_X.",
       "title": "X・.",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["x", "."],
@@ -30,7 +30,7 @@
       "id": "L2_p3_BN",
       "title": "B・N",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["b", "n"],
@@ -43,7 +43,7 @@
       "id": "L2_p4_VM",
       "title": "V・M",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["v", "m"],
@@ -56,7 +56,7 @@
       "id": "L2_p5_C,",
       "title": "C・,",
       "mode": "drill",
-      "durationSec": 30,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["c", ","],
@@ -69,7 +69,7 @@
       "id": "L2_p6_all",
       "title": "Z〜. 全部",
       "mode": "drill",
-      "durationSec": 45,
+      "durationSec": 20,
       "generator": {
         "type": "random",
         "keys": ["z","x","c","v","b","n","m",",","."],
