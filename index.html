@@ -5,6 +5,16 @@
   <!-- 小画面・ノッチ端末対応（viewport-fit=cover 追加） -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>いつでもタイピング</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FDX67L02TV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-FDX67L02TV", { send_page_view: false });
+  </script>
+
   <link rel="stylesheet" href="./css/main.css?v=2" />
 </head>
 <body>
@@ -33,7 +43,7 @@
   </footer>
 
   <!-- スクリプト（順序重要） -->
-  <script src="./js/router.js?v=3" type="module"></script>
+  <script src="./js/router.js?v=4" type="module"></script>
   <script src="./js/keyboard.js"></script>
   <script src="./js/sound.js" type="module"></script>
   <script src="./js/typing-engine.js" type="module"></script>

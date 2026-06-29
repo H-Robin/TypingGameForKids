@@ -19,6 +19,7 @@
   const DEFAULT_ROUTE = "/home";
   const appEl = document.getElementById("app");
   const cache = new Map();
+  let lastTrackedPath = "";
 
   function normalizeHash(hash) {
     const h = (hash || "").replace(/^#/, "");
@@ -151,6 +152,17 @@
     }
   }
 
+  function trackPageView(path) {
+    if (typeof window.gtag !== "function") return;
+    if (path === lastTrackedPath) return;
+    lastTrackedPath = path;
+    window.gtag("event", "page_view", {
+      page_title: document.title,
+      page_location: `${location.origin}${location.pathname}${location.search}#${path}`,
+      page_path: `/#${path}`,
+    });
+  }
+
   async function navigate(rawHash) {
     const path = normalizeHash(rawHash);
     updateNavigationState(path);
@@ -164,6 +176,7 @@
       showLoading();
       const html = await fetchView(url);
       mountView(path, html);
+      trackPageView(path);
     } catch (err) {
       console.error(err);
       showNotFound(path);
