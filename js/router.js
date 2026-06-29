@@ -12,6 +12,8 @@
     "/settings":      "views/settings.html",
     "/result":        "views/result.html",
     "/mouse":         "views/game_mouse.html",
+    "/reaction-games": "views/reaction_games.html",
+    "/color-bar":     "views/color_bar.html",
   };
 
   const DEFAULT_ROUTE = "/home";
@@ -64,6 +66,7 @@
   function teardownEngines() {
     try { window.TypingEngine?.reset?.();     window.TypingEngine?.unmount?.(); } catch(_) {}
     try { window.TypingEngineKana?.reset?.(); window.TypingEngineKana?.unmount?.(); } catch(_) {}
+    try { window.ColorBarGame?.unmount?.(); } catch(_) {}
   }
 
   // ---- タイマ方式で“準備完了”を待ってから finger-panel へスクロール ----

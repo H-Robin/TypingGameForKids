@@ -1,0 +1,47 @@
+<section id="color-bar" class="view color-bar-view">
+  <link rel="stylesheet" href="./css/color_bar.css?v=26" />
+
+  <div class="color-bar-app">
+    <div class="color-bar-head">
+      <div>
+        <p class="color-bar-eyebrow">タイピング反応ゲーム</p>
+        <h2>バーで色分けゲーム</h2>
+      </div>
+    </div>
+
+    <div class="color-bar-play-layout">
+      <aside class="color-bar-scoreboard" aria-live="polite">
+        <div class="score-main">
+          <span>SCORE</span>
+          <strong id="colorBarScore">0</strong>
+        </div>
+        <div class="score-row"><span>TIME</span><strong id="colorBarTime">30s:00</strong></div>
+        <div class="score-row"><span>MISS</span><strong id="colorBarMiss">0</strong></div>
+        <div class="score-row"><span>STREAK</span><strong id="colorBarStreak">0</strong></div>
+        <div class="score-row"><span>COMBO</span><strong id="colorBarCombo">0</strong></div>
+        <div class="score-row"><span>BPM</span><strong id="colorBarBpm">25</strong></div>
+      </aside>
+
+      <div class="color-bar-stage-wrap">
+        <div id="colorBarField" class="color-bar-field" aria-label="バーで色分けゲームのフィールド">
+          <canvas id="colorBarCanvas" class="color-bar-canvas" width="430" height="700"></canvas>
+        </div>
+      </div>
+
+      <aside class="color-bar-command-panel">
+        <div id="colorBarStatus" class="color-bar-status">Spaceで開始</div>
+        <div class="color-bar-controls">
+          <button id="colorBarStart" class="primary">スタート</button>
+          <button id="colorBarReset">リセット</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script type="module">
+    import { ColorBarGame } from "./js/color-bar.js?v=28";
+    window.ColorBarGame = ColorBarGame;
+    ColorBarGame.mount();
+    document.addEventListener("hashchange", () => ColorBarGame.unmount?.(), { once: true });
+  </script>
+</section>
