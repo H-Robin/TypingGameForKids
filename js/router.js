@@ -20,6 +20,7 @@
   const appEl = document.getElementById("app");
   const cache = new Map();
   let lastTrackedPath = "";
+  let initialPageViewHandled = false;
 
   function normalizeHash(hash) {
     const h = (hash || "").replace(/^#/, "");
@@ -154,6 +155,11 @@
 
   function trackPageView(path) {
     if (typeof window.gtag !== "function") return;
+    if (!initialPageViewHandled) {
+      initialPageViewHandled = true;
+      lastTrackedPath = path;
+      return;
+    }
     if (path === lastTrackedPath) return;
     lastTrackedPath = path;
     window.gtag("event", "page_view", {
