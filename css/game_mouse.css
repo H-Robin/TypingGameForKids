@@ -1,59 +1,75 @@
 /* === Mouse game: scoped styles (SPA safe) === */
 .mouse-view {
   /* このビュー専用の余白だけ調整。サイト全体のbodyや#headerは触らない */
-  padding: 1rem;
+  padding: 40px 0 56px;
 }
 
 /* タイトル（共通ヘッダーとは別） */
 .mouse-view .mouse-title {
-  margin: 0 0 12px;
-  font-size: clamp(15px, 2.4vw, 28px);
-  letter-spacing: .02em;
+  max-width: 720px;
+  margin: 0 auto 22px;
+  color: #172033;
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
+  font-weight: 900;
+  line-height: 1.55;
   text-align: center;
 }
 
 .mouse-view .mouse-app{
   /* カード風の器。色味は目立ちすぎないよう薄め */
-  width: min(900px, 92vw);
+  width: min(920px, 100%);
   margin: 0 auto;
-  padding: 16px;
-  border-radius: 16px;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+  padding: 36px 32px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid #dbe7f6;
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.12);
 }
 
 .mouse-view .controls{
   display:flex; flex-wrap:wrap; gap:12px; align-items:center; justify-content:center;
-  margin:8px 0 10px;
+  margin:0 0 16px;
 }
-.mouse-view .time-input{ display:inline-flex; align-items:center; gap:8px; font-size:14px; color:#6b7280 }
+.mouse-view .time-input{ display:inline-flex; align-items:center; gap:8px; font-size:.95rem; color:#536070 }
 .mouse-view .time-input input{
-  width:80px; padding:6px 10px; border-radius:10px; border:1px solid #d1d5db; background:#fff; color:#111;
+  min-height:56px; width:104px; padding:8px 12px; border-radius:16px; border:2px solid #bfdbfe; background:#fff; color:#172033;
+  font-size:1.55rem;
+  font-weight:900;
+  text-align:center;
 }
 
 .mouse-view .btn{
-  appearance:none; border:none; padding:8px 14px; border-radius:12px; background:#1f2937; color:#fff;
-  cursor:pointer; transition:transform .06s, box-shadow .2s, background .2s; border:1px solid rgba(255,255,255,.08);
+  appearance:none; min-height:48px; border:2px solid #2563eb; padding:.7rem 1.1rem; border-radius:14px; background:#2563eb; color:#fff;
+  cursor:pointer; font-size:1rem; font-weight:800; line-height:1.3; box-shadow:0 5px 0 #1e40af;
+  transition:transform .18s, box-shadow .18s, background .18s, border-color .18s;
 }
-.mouse-view .btn:hover{ background:#243041 }
-.mouse-view .btn:active{ transform:translateY(1px) }
+.mouse-view .btn:hover{ background:#1d4ed8; border-color:#1d4ed8; }
+.mouse-view .btn:active{ transform:translateY(2px); box-shadow:0 3px 0 #1e40af; }
 .mouse-view .btn.primary{
-  background:linear-gradient(180deg,#0ea5e9,#0284c7);
-  border:none; box-shadow:0 8px 18px rgba(56,189,248,.25)
+  background:#2563eb;
+  border-color:#2563eb;
+  box-shadow:0 5px 0 #1e40af;
 }
-.mouse-view .btn.secondary{ background:#fff; color:#111; border:1px solid #e5e7eb }
+.mouse-view .btn.secondary{ background:#fff; color:#2563eb; border:2px solid #2563eb; box-shadow:none; }
 
 .mouse-view .status{
-  display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:8px; padding:10px; background:#f8fafc;
-  border-radius:14px; border:1px solid #e5e7eb; font-size:clamp(14px,1.8vw,16px); text-align:center;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:10px; max-width:760px; margin:0 auto 24px; padding:12px; background:#f8fbff;
+  border-radius:18px; border:1px solid #dbe7f6; color:#536070; font-size:.95rem; line-height:1.55; text-align:center;
+  box-shadow:none;
+}
+
+.mouse-view .status span {
+  color:#172033;
+  font-size:1.2rem;
+  font-weight:900;
 }
 
 /* 盤面：コンパクト＆中央寄せ */
 .mouse-view .board{
-  margin:18px auto 0; width:min(400px, 90%); aspect-ratio:1/1;
-  display:grid; grid-template-columns:repeat(3,1fr); gap:12px; padding:12px;
-  background:#0b1220; border-radius:16px; border:1px solid rgba(255,255,255,.06);
+  margin:0 auto; width:min(520px, 92%); aspect-ratio:1/1;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:16px; padding:18px;
+  background:#172033; border-radius:26px; border:8px solid rgba(255,255,255,.72);
+  box-shadow:0 18px 40px rgba(15,23,42,.18);
 }
 
 /* 色・トーン（黄色ライト用の変数） */
@@ -65,7 +81,7 @@
 
 /* マス */
 .mouse-view .cell{
-  position:relative; border-radius:14px; background:#111827; border:1px solid rgba(255,255,255,.04);
+  position:relative; border-radius:20px; background:#111827; border:1px solid rgba(255,255,255,.04);
   box-shadow:inset 0 0 0 1px rgba(0,0,0,.3);
   display:grid; place-items:center; user-select:none; -webkit-tap-highlight-color:transparent;
   transition:transform .05s, background .2s, box-shadow .2s;
@@ -93,6 +109,8 @@
     0 18px 40px rgba(250,204,21,.35),
     inset 0 0 36px rgba(250,204,21,.45);
   animation:pulse 1s ease-out;
+  outline:5px solid rgba(250,204,21,.9);
+  outline-offset:2px;
 }
 
 @keyframes pulse{
@@ -100,5 +118,21 @@
   100%{ box-shadow:0 0 0 14px rgba(250,204,21,0), inset 0 0 8px rgba(250,204,21,.18); }
 }
 
-.mouse-view .notes{ color:var(--muted); font-size:13px; margin-top:14px; text-align:center; }
+.mouse-view .notes{ color:#64748b; font-size:.9rem; line-height:1.7; margin-top:22px; text-align:center; }
 .mouse-view .notes ul{ margin:0 0 0 18px; padding:0; display:inline-block; text-align:left; }
+
+@media (max-width: 760px) {
+  .mouse-view .mouse-app {
+    padding: 26px 18px;
+  }
+
+  .mouse-view .status {
+    grid-template-columns: 1fr;
+  }
+
+  .mouse-view .board {
+    width: min(440px, 94%);
+    gap: 12px;
+    padding: 14px;
+  }
+}

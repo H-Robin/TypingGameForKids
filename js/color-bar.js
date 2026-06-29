@@ -604,7 +604,7 @@ export const ColorBarGame = (() => {
     state.nextSpawnAt = performance.now();
     clearBalls();
     updateHud();
-    setStatus("落ちてくる色に合わせて左右へ振る");
+    setStatus("色を見て、左右のキーでバーを動かそう");
     draw();
     state.loopId = requestAnimationFrame(loop);
   }
@@ -615,7 +615,7 @@ export const ColorBarGame = (() => {
     clearBalls();
     draw();
     updateHud();
-    setStatus(`終了！ 得点 ${state.score} / ミス ${state.miss}`);
+    setStatus(`できた！ 得点 ${state.score} / ここだけ直そう ${state.miss}`);
   }
 
   function reset() {

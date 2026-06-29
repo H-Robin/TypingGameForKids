@@ -27,6 +27,30 @@
     return pathOnly.startsWith("/") ? pathOnly : "/" + pathOnly;
   }
 
+  function navHrefForPath(path) {
+    if (path === "/practice" || path === "/drop-lesson") return "#/lessons";
+    if (path === "/kana-practice" || path === "/kana-drop") return "#/kana-lessons";
+    if (path === "/color-bar") return "#/reaction-games";
+    if (path === "/mouse") return "#/mouse";
+    if (path === "/reaction-games") return "#/reaction-games";
+    if (path === "/kana-lessons") return "#/kana-lessons";
+    if (path === "/lessons") return "#/lessons";
+    return "#/home";
+  }
+
+  function updateNavigationState(path) {
+    const currentHref = navHrefForPath(path);
+    document.querySelectorAll("#header nav a").forEach((link) => {
+      const isCurrent = link.getAttribute("href") === currentHref;
+      link.classList.toggle("is-active", isCurrent);
+      if (isCurrent) {
+        link.setAttribute("aria-current", "page");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
   function wireDataLinkClicks() {
     document.addEventListener("click", (e) => {
       const el = e.target.closest("[data-link]");
@@ -129,6 +153,7 @@
 
   async function navigate(rawHash) {
     const path = normalizeHash(rawHash);
+    updateNavigationState(path);
     const url = routes[path];
     if (!url) {
       showNotFound(path);

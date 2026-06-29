@@ -155,7 +155,7 @@ export const TypingEngineKana = (() => {
     setSequence(firstRoma);
 
     const E = el();
-    if (E.fb) E.fb.textContent = "がんばれ！";
+    if (E.fb) E.fb.textContent = "上のローマ字を順番に押そう";
     refreshHUD();
     clearInterval(state.timer);
     state.timer = setInterval(tick, 1000);
@@ -169,7 +169,7 @@ export const TypingEngineKana = (() => {
     if (!state.running || state.over) return;
     state.paused = true;
     const E = el();
-    if (E.fb) E.fb.textContent = "一時停止中（Enterで再開）";
+    if (E.fb) E.fb.textContent = "ひと休み中（Enterで再開）";
   }
 
   function reset() {
@@ -201,7 +201,7 @@ export const TypingEngineKana = (() => {
     const E = el();
     if (E.fb) {
       const w = E.wpm ? E.wpm.textContent : "0";
-      E.fb.textContent = `WPM ${w} おつかれさま！`;
+      E.fb.textContent = `できた！ WPM ${w}`;
     }
     window.KeyboardUI?.clearTargets?.();
   }
@@ -247,7 +247,7 @@ export const TypingEngineKana = (() => {
     if (code === "Space" && !state.running) { start(); return; }
     if (code === "Enter" && state.paused) {
       state.paused = false;
-      const E = el(); if (E.fb) E.fb.textContent = "再開";
+      const E = el(); if (E.fb) E.fb.textContent = "つづきを入力しよう";
       return;
     }
     const ch = codeToChar(code);
@@ -262,7 +262,7 @@ export const TypingEngineKana = (() => {
     if (e.key === "Escape" || e.code === "Escape") { pause(); return; }
     if ((e.key === "Enter" || e.code === "Enter") && state.paused) {
       state.paused = false;
-      const E = el(); if (E.fb) E.fb.textContent = "再開";
+      const E = el(); if (E.fb) E.fb.textContent = "つづきを入力しよう";
       return;
     }
     if (!state.running || state.paused || state.over) return;

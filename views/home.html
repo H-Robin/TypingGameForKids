@@ -1,12 +1,57 @@
 <section id="home" class="view home-view">
   <div class="home-container">
-    <div class="menu">
-      <button data-link="#/lessons">キーボード練習</button>
-      <button data-link="#/kana-lessons">ひらがな練習</button>
-<!-- <button data-link="#/timeattack">タイムアタック!!準備中!!</button> -->
-      <button data-link="#/mouse">マウス練習</button>
-      <button data-link="#/reaction-games">タイピング反応ゲーム</button>
-<!--      <button data-link="#/settings">設定!!準備中!!</button> -->
+    <div class="home-intro">
+      <p>キーボードとマウスに少しずつなれる練習サイトです。</p>
+      <p>速さより、正しく入力することを大切にします。</p>
+    </div>
+
+    <div class="home-card-grid" aria-label="練習メニュー">
+      <article class="home-practice-card">
+        <div class="home-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" focusable="false">
+            <rect x="6" y="12" width="36" height="24" rx="5"></rect>
+            <path d="M13 19h4M22 19h4M31 19h4M13 26h4M22 26h4M31 26h4M16 32h16"></path>
+          </svg>
+        </div>
+        <h2>キーボード練習</h2>
+        <p>キーの場所をおぼえる</p>
+        <button data-link="#/lessons">はじめる</button>
+      </article>
+
+      <article class="home-practice-card">
+        <div class="home-card-icon" aria-hidden="true">あ</div>
+        <h2>ひらがな練習</h2>
+        <p>短いことばを入力する</p>
+        <button data-link="#/kana-lessons">はじめる</button>
+      </article>
+
+      <article class="home-practice-card home-game-card">
+        <div class="home-game-preview mouse-preview" aria-hidden="true">
+          <div class="mouse-preview-grid">
+            <span></span>
+            <span class="is-lit"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+        <h2>マウス練習</h2>
+        <p>クリックとドラッグ</p>
+        <button data-link="#/mouse">はじめる</button>
+      </article>
+
+      <article class="home-practice-card home-game-card">
+        <div class="home-game-preview reaction-preview" aria-hidden="true">
+          <img src="./assets/imgs/color-bar-thumbnail.png" alt="" />
+        </div>
+        <h2>タイピング反応ゲーム</h2>
+        <p>見て、すばやく押す</p>
+        <button data-link="#/reaction-games">はじめる</button>
+      </article>
     </div>
   </div>
 </section>

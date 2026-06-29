@@ -224,7 +224,7 @@ export const DropLesson = (() => {
     clearItems();
     updateDifficulty();
     updateHUD();
-    setStatus("がんばれ！ Spaceで開始 / Escで一時停止");
+    setStatus("落ちてくる文字を見て、順番に押そう");
 
     clearInterval(state.timer);
     state.timer = setInterval(tick, 1000);
@@ -236,7 +236,7 @@ export const DropLesson = (() => {
   function pause() {
     if (!state.running || state.over) return;
     state.paused = true;
-    setStatus("一時停止中（Enterで再開）");
+    setStatus("ひと休み中（Enterで再開）");
   }
 
   function finish() {
@@ -245,7 +245,7 @@ export const DropLesson = (() => {
     clearInterval(state.timer);
     cancelAnimationFrame(state.loopId);
     clearItems();
-    setStatus(`終了！ スコア ${state.score} / 正打 ${state.ok} ミス ${state.ng}`);
+    setStatus(`できた！ スコア ${state.score} / ここだけ直そう ${state.ng}`);
   }
 
   function reset() {
@@ -267,7 +267,7 @@ export const DropLesson = (() => {
     if (e.isComposing) return;
     if (e.code === "Space" && !state.running) { e.preventDefault(); start(); return; }
     if (e.key === "Escape") { pause(); return; }
-    if (e.key === "Enter" && state.paused) { state.paused = false; setStatus("再開！"); return; }
+    if (e.key === "Enter" && state.paused) { state.paused = false; setStatus("つづきを入力しよう"); return; }
     if (!state.running || state.paused || state.over) return;
 
     const ch = codeToChar(e.code, e.key);

@@ -89,7 +89,7 @@ export const TypingEngine = (() => {
     // ここでジェネレータから初期シーケンスを生成
     const firstSeq = state.generator ? state.generator() : "Spaceボタンを押してスタート";
     setSequence(firstSeq);
-    el().fb.textContent = "がんばれ！";
+    el().fb.textContent = "出ている文字を順番に押そう";
     refreshHUD();
     clearInterval(state.timer); state.timer = setInterval(tick,1000);
 　  // ★ キーボードを下に合わせて表示
@@ -101,7 +101,7 @@ export const TypingEngine = (() => {
 */
   }
 
-  function pause(){ if(!state.running||state.over) return; state.paused=true; el().fb.textContent="一時停止中（Enterで再開）"; }
+  function pause(){ if(!state.running||state.over) return; state.paused=true; el().fb.textContent="ひと休み中（Enterで再開）"; }
   function reset(){ clearInterval(state.timer); state.running=false; state.paused=false; state.over=false;
     state.ok=0; state.ng=0; state.remain=state.totalSec; state.idx=0; state.typedRaw="";
     el().fb.textContent="Spaceで開始 / Escで一時停止";
@@ -111,14 +111,14 @@ export const TypingEngine = (() => {
     window.KeyboardUI?.clearTargets(); refreshHUD(); }
 
   function finish(){ state.running=false; state.over=true; clearInterval(state.timer); refreshHUD();
-    el().fb.textContent = `WPM ${el().wpm.textContent} / 正確度 ${el().acc.textContent}%`;
+    el().fb.textContent = `できた！ 正確度 ${el().acc.textContent}% / WPM ${el().wpm.textContent}`;
     window.KeyboardUI?.clearTargets(); }
 
   function handleKeydown(e){
     if(state.composing) return;
     if(e.code==="Space" && !state.running){ e.preventDefault(); start(); return; }
     if(e.key==="Escape"){ pause(); return; }
-    if(e.key==="Enter" && state.paused){ state.paused=false; el().fb.textContent="再開"; return; }
+    if(e.key==="Enter" && state.paused){ state.paused=false; el().fb.textContent="つづきを入力しよう"; return; }
     if(!state.running||state.paused||state.over) return;
 
     const need = state.seqRaw[state.idx] || "";
